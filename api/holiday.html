@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+
+<html>
+  <head lang="zh">
+    <meta charset="UTF-8" />
+    <script src="/js/jquery-3.6.0.min.js"></script>
+    <script src="/js/jquery.params.js"></script>
+    <script>
+      $(function () {
+        var date = $.query.get("date"); // 获取参数
+        var base_url =
+          "https://service-cu3bic1s-1302072848.sg.apigw.tencentcs.com/release/holiday/";
+        var url = base_url + date; // 构造 url
+        console.log("date: " + date);
+        console.log("url: " + url);
+        window.location.href = url; // 跳转
+      });
+    </script>
+  </head>
+</html>
