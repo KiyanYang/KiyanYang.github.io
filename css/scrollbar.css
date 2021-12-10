@@ -1,4 +1,4 @@
-/* 滚动条 bynote.cn */
+/* 滚动条 */
 
 ::-webkit-scrollbar {
   width: 10px;
@@ -6,26 +6,11 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: #667788;
-  background-image: -webkit-linear-gradient(
-    45deg,
-    rgba(255, 255, 255, 0.4) 25%,
-    transparent 25%,
-    transparent 50%,
-    rgba(255, 255, 255, 0.4) 50%,
-    rgba(255, 255, 255, 0.4) 75%,
-    transparent 75%,
-    transparent
-  );
+  background-color: #607080;
   border-radius: 2em;
   min-height: 60px;
 }
 
 ::-webkit-scrollbar-corner {
   background-color: transparent;
-}
-
-::-moz-selection {
-  color: #ffffff;
-  background-color: #708090;
 }
