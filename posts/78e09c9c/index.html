@@ -69,6 +69,10 @@
 
 <!-- 自定义样式保持在最底部 -->
 
+  
+<link rel="stylesheet" href="/css/scrollbar.css">
+
+
 
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
@@ -268,7 +272,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：5 小时前
+                  本文最后更新于：9 小时前
                 
               </p>
             
@@ -851,7 +855,7 @@ inside a list item.</p>
     Fluid.utils.loadComments('#waline', function() {
       Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/@waline/client@1/dist/Waline.min.js', function() {
         var options = Object.assign(
-          {"serverURL":"https://blog-waline-kiyanyang.vercel.app/","path":"window.location.pathname","placeholder":null,"meta":["nick","mail","link"],"requiredMeta":["nick"],"lang":"zh-CN","emoji":["https://cdn.jsdelivr.net/gh/walinejs/emojis@1.0.0/bilibili","https://cdn.jsdelivr.net/gh/walinejs/emojis@1.0.0/weibo"],"dark":"html[data-user-color-scheme=\"dark\"]","avatar":"retro","avatarCDN":"https://seccdn.libravatar.org/avatar/","avatarForce":false,"wordLimit":0,"pageSize":10,"highlight":true},
+          {"serverURL":"https://blog-waline-kiyanyang.vercel.app/","path":"window.location.pathname","placeholder":null,"meta":["nick","mail","link"],"requiredMeta":["nick"],"lang":"zh-CN","emoji":["https://cdn.jsdelivr.net/gh/walinejs/emojis@1.0.0/bilibili","https://cdn.jsdelivr.net/gh/walinejs/emojis@1.0.0/weibo"],"dark":"html[data-user-color-scheme=\"dark\"]","avatar":"retro","avatarCDN":"https://seccdn.libravatar.org/avatar/","avatarForce":false,"wordLimit":[3,2048],"pageSize":10,"highlight":true},
           {
             el: '#waline',
             path: window.location.pathname
@@ -1073,5 +1077,7 @@ inside a list item.</p>
 <script  src="/js/boot.js" ></script>
 
 
-</body>
+<!-- hexo injector body_end start -->
+  <script src="/js/background-caidai.js"></script>
+  <!-- hexo injector body_end end --></body>
 </html>
