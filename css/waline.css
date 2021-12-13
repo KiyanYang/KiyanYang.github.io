@@ -2,38 +2,26 @@
   --waline-avatar-size: 4rem;
   --waline-badge-font-size: 0.75em;
 }
-
-/* 调整输入框左侧标签的大小，位置，文字 */
 #waline label {
   min-width: 28px;
-  margin-bottom: 0; /* dev 已修复：Waline 评论的头部标签在水平方向未对齐 #623 */
+  margin-bottom: 0;
   font-size: 0.875em;
   font-weight: bold;
 }
-
-/* 调整输入框文字大小 */
 #waline input {
   font-size: 0.875em;
 }
-
-/* 调整名称后面的小盾牌的位置 */
-#waline .v[data-class="v"] .vcard .vhead .vnick svg {
+#waline .v[data-class='v'] .vcard .vhead .vnick svg {
   bottom: 0.125em;
 }
-
-/* 调整博主名称标记的大小 */
-#waline .v[data-class="v"] .vcard .vhead .vbadge {
+#waline .v[data-class='v'] .vcard .vhead .vbadge {
   line-height: normal;
   padding: 0.1em 0.3em;
 }
-
-/* 调整 UA 标记的圆角和间距 */
-#waline .v[data-class="v"] .vcard .vmeta > span {
+#waline .v[data-class='v'] .vcard .vmeta > span {
   border-radius: 0.5em;
   margin-right: 1em;
 }
-
-/* 调整表情位置 */
-#waline .v[data-class="v"] .vcontent .vemoji {
+#waline .v[data-class='v'] .vcontent .vemoji {
   vertical-align: top;
 }

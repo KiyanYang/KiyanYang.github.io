@@ -1,11 +1,9 @@
 .copy-btn {
   font-size: 1rem;
 }
-
 .copy-btn-dark {
-  color: darkslategrey;
+  color: #2f4f4f;
 }
-
 .copy-btn > i {
   font-size: 0.875rem;
   font-weight: bold;

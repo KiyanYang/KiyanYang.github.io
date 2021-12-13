@@ -1,6 +1,6 @@
 [data-user-color-scheme='dark'] .markdown-body pre,
 [data-user-color-scheme='dark'] .markdown-body td.gutter,
-[data-user-color-scheme='dark'] .markdown-body td.gutter >pre,
+[data-user-color-scheme='dark'] .markdown-body td.gutter > pre,
 [data-user-color-scheme='dark'] .markdown-body td.code > .code-wrapper {
   -webkit-filter: unset;
   filter: unset;
