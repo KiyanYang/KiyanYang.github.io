@@ -25,3 +25,6 @@
 #waline .v[data-class='v'] .vcontent .vemoji {
   vertical-align: top;
 }
+#waline .v[data-class='v'] .vinfo {
+  flex: auto;
+}
