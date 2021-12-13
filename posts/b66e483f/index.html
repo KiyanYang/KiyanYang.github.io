@@ -15,17 +15,16 @@
     <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
   
   <meta name="theme-color" content="#2f4154">
-  <meta name="description" content=" 引言
-VS Code 的任务可以运行脚本和启动进程，通过配置任务文件进行重复性工作，可以大大提高效率。
+  <meta name="description" content="VS Code 的任务可以运行脚本和启动进程，通过配置任务文件进行重复性工作，可以大大提高效率。
 本文章要实现目标是通过配置任务，可以使用 Ctrl+Shift+B（“运行生成任务”的快捷键）自动完成 Hexo 的清理、生成、开启本地服务，并且可以使用 VS Code 的“终端”菜单下的“运行命令”完成上述的单个命令。">
   <meta name="author" content="杨可">
   <meta name="keywords" content="KiyanYang,Blog,杨可,博客">
-  <meta name="description" content="引言 VS Code 的任务可以运行脚本和启动进程，通过配置任务文件进行重复性工作，可以大大提高效率。 本文章要实现目标是通过配置任务，可以使用 Ctrl+Shift+B（“运行生成任务”的快捷键）自动完成 Hexo 的清理、生成、开启本地服务，并且可以使用 VS Code 的“终端”菜单下的“运行命令”完成上述的单个命令。">
+  <meta name="description" content="VS Code 的任务可以运行脚本和启动进程，通过配置任务文件进行重复性工作，可以大大提高效率。 本文章要实现目标是通过配置任务，可以使用 Ctrl+Shift+B（“运行生成任务”的快捷键）自动完成 Hexo 的清理、生成、开启本地服务，并且可以使用 VS Code 的“终端”菜单下的“运行命令”完成上述的单个命令。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="使用 Visual Studio Code 的任务（Tasks）便捷操作 Hexo">
 <meta property="og:url" content="https://kiyanyang.github.io/posts/b66e483f/index.html">
 <meta property="og:site_name" content="KiyanYang&#39;s Blog">
-<meta property="og:description" content="引言 VS Code 的任务可以运行脚本和启动进程，通过配置任务文件进行重复性工作，可以大大提高效率。 本文章要实现目标是通过配置任务，可以使用 Ctrl+Shift+B（“运行生成任务”的快捷键）自动完成 Hexo 的清理、生成、开启本地服务，并且可以使用 VS Code 的“终端”菜单下的“运行命令”完成上述的单个命令。">
+<meta property="og:description" content="VS Code 的任务可以运行脚本和启动进程，通过配置任务文件进行重复性工作，可以大大提高效率。 本文章要实现目标是通过配置任务，可以使用 Ctrl+Shift+B（“运行生成任务”的快捷键）自动完成 Hexo 的清理、生成、开启本地服务，并且可以使用 VS Code 的“终端”菜单下的“运行命令”完成上述的单个命令。">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/KiyanYang/Source@latest/img/blog/b66e483f/run-tasks-1.png">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/KiyanYang/Source@latest/img/blog/b66e483f/run-tasks-2.png">
@@ -184,16 +183,40 @@ VS Code 的任务可以运行脚本和启动进程，通过配置任务文件进
             </li>
           
         
+          
+          
+          
+          
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" target="_self" href="javascript:;" role="button"
+                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="iconfont icon-th-large"></i>
+                应用
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" target="_blank" rel="noopener external nofollow noreferrer" href="https://blog-waline-one-lovat.vercel.app/ui">
+                    
+                    评论管理
+                  </a>
+                
+              </div>
+            </li>
+          
+        
         
           <li class="nav-item" id="search-btn">
-            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+            <a class="nav-link" target="_self" href="javascript:;" rel="external nofollow noreferrer" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
               &nbsp;<i class="iconfont icon-search"></i>&nbsp;
             </a>
           </li>
         
         
           <li class="nav-item" id="color-toggle-btn">
-            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+            <a class="nav-link" target="_self" href="javascript:;" rel="external nofollow noreferrer" aria-label="Color Toggle">&nbsp;<i
                 class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
           </li>
         
@@ -284,13 +307,12 @@ VS Code 的任务可以运行脚本和启动进程，通过配置任务文件进
             
               <p class="note note-info">
                 
-                  本文最后更新于：4 小时前
+                  本文最后更新于：7 小时前
                 
               </p>
             
             <div class="markdown-body">
-              <h2 id="引言"><a class="markdownIt-Anchor" href="#引言"></a> 引言</h2>
-<p>VS Code 的任务可以运行脚本和启动进程，通过配置任务文件进行重复性工作，可以大大提高效率。</p>
+              <p>VS Code 的任务可以运行脚本和启动进程，通过配置任务文件进行重复性工作，可以大大提高效率。</p>
 <p>本文章要实现目标是通过配置任务，可以使用 <code>Ctrl+Shift+B</code>（“运行生成任务”的快捷键）自动完成 Hexo 的清理、生成、开启本地服务，并且可以使用 VS Code 的“终端”菜单下的“运行命令”完成上述的单个命令。</p>
 <span id="more"></span>
 <h2 id="配置-tasks"><a class="markdownIt-Anchor" href="#配置-tasks"></a> 配置 Tasks</h2>
@@ -302,7 +324,7 @@ VS Code 的任务可以运行脚本和启动进程，通过配置任务文件进
 <h3 id="配置单个-hexo-命令"><a class="markdownIt-Anchor" href="#配置单个-hexo-命令"></a> 配置单个 Hexo 命令</h3>
 <p>以 <code>hexo generate</code> 命令为例，在 <code>tasks.json</code> 粘贴下面的代码。</p>
 <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs json">&#123;<br>  <span class="hljs-attr">&quot;version&quot;</span>: <span class="hljs-string">&quot;2.0.0&quot;</span>,<br>  <span class="hljs-attr">&quot;tasks&quot;</span>: [<br>    &#123;<br>      <span class="hljs-comment">// 任务类型。</span><br>      <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;shell&quot;</span>,<br>      <span class="hljs-comment">// 任务的用户界面中使用的标签；相当于变量名。</span><br>      <span class="hljs-attr">&quot;label&quot;</span>: <span class="hljs-string">&quot;local generate&quot;</span>,<br>      <span class="hljs-comment">// 实际执行的命令。</span><br>      <span class="hljs-attr">&quot;command&quot;</span>: <span class="hljs-string">&quot;hexo generate&quot;</span>,<br>      <span class="hljs-comment">// 定义如何在用户界面中处理任务输出，自行定义。</span><br>      <span class="hljs-attr">&quot;presentation&quot;</span>: &#123;<br>        <span class="hljs-comment">// 命令面板。dedicated -&gt; 如果任务已在命令面板中则重用此面板，否则新建面板。</span><br>        <span class="hljs-attr">&quot;panel&quot;</span>: <span class="hljs-string">&quot;dedicated&quot;</span>,<br>        <span class="hljs-comment">// 任务执行前是否清理命令面板。</span><br>        <span class="hljs-attr">&quot;clear&quot;</span>: <span class="hljs-literal">true</span><br>      &#125;,<br>      <span class="hljs-comment">// 问题匹配器，为空则不匹配任何问题。</span><br>      <span class="hljs-attr">&quot;problemMatcher&quot;</span>: []<br>    &#125;<br>  ]<br>&#125;<br></code></pre></td></tr></table></figure>
-<p>代码中的参数根据注释和名称自行理解，想要查看更多的参数信息或关于 <code>Tasks</code> 的信息可以访问<a target="_blank" rel="noopener" href="https://code.visualstudio.com/Docs/editor/tasks">官方文档</a> 。</p>
+<p>代码中的参数根据注释和名称自行理解，想要查看更多的参数信息或关于 <code>Tasks</code> 的信息可以访问<a target="_blank" rel="noopener external nofollow noreferrer" href="https://code.visualstudio.com/Docs/editor/tasks">官方文档</a> 。</p>
 <p><strong>备注</strong>：上述任务中的 <code>presentation</code> 和 <code>problemMatcher</code> 是非必要的，但是实际使用时可以减少 VS Code 可能出现的询问次数。</p>
 <h3 id="配置多个-hexo-命令"><a class="markdownIt-Anchor" href="#配置多个-hexo-命令"></a> 配置多个 Hexo 命令</h3>
 <p>我们还需要按照上述增加其他命令，添加后的代码如下：</p>

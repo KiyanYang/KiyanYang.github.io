@@ -1,5 +1,5 @@
 !(function () {
-  /** 计时起始时间，自行修改 **/
+  /** 计时起始时间 **/
   var start = new Date("2021/07/10 16:03:05");
 
   function update() {
@@ -22,7 +22,7 @@
     if (String(snum).length === 1) {
       snum = "0" + snum;
     }
-    document.getElementById("timeDate").innerHTML = "本站安全运行&nbsp" + dnum + "&nbsp天";
+    document.getElementById("timeDate").innerHTML = "本站已运行&nbsp" + dnum + "&nbsp天";
     document.getElementById("times").innerHTML =
       hnum + "&nbsp小时&nbsp" + mnum + "&nbsp分&nbsp" + snum + "&nbsp秒";
   }
