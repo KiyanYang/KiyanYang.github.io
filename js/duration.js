@@ -1,6 +1,11 @@
 !(function () {
-  /** 计时起始时间 **/
+  // 计时起始时间
   var start = new Date("2021/07/10 16:03:05");
+
+  // 前面补零
+  function prefixInteger(num, n) {
+    return (Array(n).join(0) + num).slice(-n);
+  }
 
   function update() {
     var now = new Date();
@@ -9,22 +14,18 @@
     dnum = Math.floor(days);
     hours = (now - start) / 1000 / 60 / 60 - 24 * dnum;
     hnum = Math.floor(hours);
-    if (String(hnum).length === 1) {
-      hnum = "0" + hnum;
-    }
     minutes = (now - start) / 1000 / 60 - 24 * 60 * dnum - 60 * hnum;
     mnum = Math.floor(minutes);
-    if (String(mnum).length === 1) {
-      mnum = "0" + mnum;
-    }
     seconds = (now - start) / 1000 - 24 * 60 * 60 * dnum - 60 * 60 * hnum - 60 * mnum;
     snum = Math.round(seconds);
-    if (String(snum).length === 1) {
-      snum = "0" + snum;
-    }
-    document.getElementById("timeDate").innerHTML = "本站已运行&nbsp" + dnum + "&nbsp天";
-    document.getElementById("times").innerHTML =
-      hnum + "&nbsp小时&nbsp" + mnum + "&nbsp分&nbsp" + snum + "&nbsp秒";
+
+    hnum = prefixInteger(hnum, 2);
+    mnum = prefixInteger(mnum, 2);
+    snum = prefixInteger(snum, 2);
+
+    document.getElementById(
+      "website-duration"
+    ).innerHTML = `本站已运行&nbsp${dnum}&nbsp天&nbsp${hnum}&nbsp小时&nbsp${mnum}&nbsp分&nbsp${snum}&nbsp秒`;
   }
 
   update();
