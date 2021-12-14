@@ -86,3 +86,14 @@ figure.highlight td:first-child {
   transition: background-color 0.2s ease-in-out;
   background-color: #dddfe1;
 }
+footer .statistics > span {
+  margin: 0 0.75rem;
+}
+.dropdown-item i {
+  width: 20px;
+  text-align: center;
+}
+.navbar .nav-item .nav-link i {
+  width: 20px;
+  text-align: center;
+}
