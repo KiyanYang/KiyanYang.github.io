@@ -4,6 +4,33 @@
   
   
   <entry>
+    <title>VTK9.1.0 + VS2022 + Qt5.12 编译</title>
+    <link href="/posts/fdce5f9b/"/>
+    <url>/posts/fdce5f9b/</url>
+    
+    <content type="html"><![CDATA[<p>本文在 Windows11 平台使用 Visual Studio 2022 编译 VTK 9.1.0。</p><span id="more"></span><h2 id="前置条件"><a class="markdownIt-Anchor" href="#前置条件"></a> 前置条件</h2><p>本文所需文件或工具：</p><table><thead><tr><th style="text-align:center">文件或工具</th><th style="text-align:center">版本</th><th style="text-align:center">网址</th></tr></thead><tbody><tr><td style="text-align:center">VTK 源码</td><td style="text-align:center">9.1.0</td><td style="text-align:center"><a href="https://vtk.org/download/">https://vtk.org/download/</a></td></tr><tr><td style="text-align:center">Visual Studio 2022</td><td style="text-align:center">17.2+</td><td style="text-align:center"><a href="https://visualstudio.microsoft.com/downloads/">https://visualstudio.microsoft.com/downloads/</a></td></tr><tr><td style="text-align:center">CMake</td><td style="text-align:center">3.23.1</td><td style="text-align:center"><a href="https://cmake.org/download/">https://cmake.org/download/</a></td></tr><tr><td style="text-align:center">Qt</td><td style="text-align:center">5.12</td><td style="text-align:center"><a href="https://www.qt.io/download">https://www.qt.io/download</a></td></tr></tbody></table><p>注意：所需工具均为 <strong>64</strong> 位。</p><h2 id="编译前准备"><a class="markdownIt-Anchor" href="#编译前准备"></a> 编译前准备</h2><p>在编译之前先准备好编译过程中所需的目录。目录结构如下：</p><figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs txt">VTK<br>├─ VTK-9.1.0-src                  # 源码<br>├─ VTK-9.1.0-bin                  # 编译生成的二进制数据<br>├─ VTK-9.1.0-vs2022-x64-debug     # 编译生成的库文件<br>└─ VTK-9.1.0-vs2022-x64-release   # 编译生成的库文件<br></code></pre></td></tr></table></figure><h2 id="cmake-编译"><a class="markdownIt-Anchor" href="#cmake-编译"></a> CMake 编译</h2><p>打开 CMake (cmake-gui)，设置 VTK 源码和生成的二进制路径，点击 <code>Configure</code>。</p><p><img src="./cmake1.webp" alt="CMake 路径设置" /></p><p>在配置对话框，选择 Visual Studio 17 2022，其他保持默认，点击 <code>Finish</code>。</p><p><img src="./cmake2.webp" alt="CMake 配置" /></p><p>在配置完成后，会出现一些红色条目，表示需要进一步处理，这是正常现象，无需担心。</p><p>在左上角搜索框搜索 <code>BUILD_SHARED_LIBS</code>，将其勾选。此项的作用是生成动态共享库 DLL。</p><p><img src="./cmake3.webp" alt="CMake 条目配置-BUILD_SHARED_LIBS" /></p><p>搜索 <code>CMAKE_INSTALL_PREFIX</code>，设置为 VTK 库要安装的位置，即 VTK 编译后的库文件位置。由于该项在设置后不可改变，因此为了可以同时生成 Debug 和 Release 两个版本，可以将该项设置为 <code>VTK-9.1.0-vs2022-x64-debug</code> 文件夹的路径。因为生成的库文件总是在 <code>VTK-9.1.0-vs2022-x64-debug</code> 文件夹，这样我们只需先生成 Release 模式下的库文件，然后将文件剪切到 <code>VTK-9.1.0-vs2022-x64-release</code> 文件夹，之后再生成 Debug 模式下的库文件即可。</p><p><img src="./cmake4.webp" alt="CMake 条目配置-CMAKE_INSTALL_PREFIX" /></p><p>搜索 <code>QT</code>，将所有条目设为 <code>Want</code>，点击 <code>Configure</code>。</p><p><img src="./cmake5.webp" alt="CMake 条目配置-QT" /></p><p>在配置完成后，选择 Qt5 的位置，路径为 <code>Qt_DIR/5.12.0/msvc2017_64/lib/cmake/.*</code>，如下图所示（一般情况下，CMake 会自动填入）。</p><p><img src="./cmake6.webp" alt="CMake 条目配置-QT_DIR" /></p><p>搜索 <code>VTK_QT_VERSION</code>，设置为 5，点击 <code>Configure</code>。</p><p><img src="./cmake7.webp" alt="CMake 条目配置-VTK_QT_VERSION" /></p><p>在配置完成后，所有条目均为白色，说明没有错误。如果还是有红色，请返回检查，直到全白。点击 <code>Generate</code>。</p><p><img src="./cmake8.webp" alt="CMake 条目配置-All_WHITE" /></p><p>在生成完成后，所有条目均为白色，说明没有错误。点击 <code>Open Project</code>，打开 VS2022。</p><p><img src="./cmake9.webp" alt="CMake 条目配置-OK" /></p><h2 id="vs2022-编译"><a class="markdownIt-Anchor" href="#vs2022-编译"></a> VS2022 编译</h2><p>选择「生成 -&gt; 批生成」。</p><p><img src="./vs1.webp" alt="VS2022-1" /></p><p>在「Batch 生成」对话框，勾选 ALL_BUILD Release x64，点击生成，生成大约需要 40 分钟。</p><p><img src="./vs2.webp" alt="VS2022-2" /></p><p>等待生成完毕，之后再次进入「Batch 生成」对话框，取消勾选上述 ALL_BUILD Release x64，然后勾选 INSTALL Release x64，点击生成。</p><p><img src="./vs3.webp" alt="VS2022-3" /></p><p><img src="./vs4.webp" alt="VS2022-4" /></p><p>此时，VTK-9.1.0-vs2022-x64-debug 文件夹内就是 VTK 9.1.0 Release 版本的库文件，将其剪切到 VTK-9.1.0-vs2022-x64-release 文件夹，就完成了 Release 版本的构建，最终 VTK-9.1.0-vs2022-x64-release 目录结构如下：</p><figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs txt">VTK-9.1.0-vs2022-x64-release<br>├─ bin<br>├─ include<br>├─ lib<br>└─ share<br></code></pre></td></tr></table></figure><p>生成 Debug 模式下的库文件和上述过程相似。首先，取消勾选 INSTALL Release x64，然后勾选 ALL_BUILD Debug x64 和 INSTALL Debug x64，点击生成，就会在 VTK-9.1.0-vs2022-x64-debug 文件夹里生成库文件。</p><h2 id="参考"><a class="markdownIt-Anchor" href="#参考"></a> 参考</h2><ul><li><a href="https://blog.csdn.net/qq_34499305/article/details/120774663">VTK9.1.0 在 Windows10 + VS2019 + Qt 5.15.2 环境下编译安装以及 VTK 应用于 QT</a></li><li><a href="https://blog.csdn.net/annjeff/article/details/88597051">VTK8.2.0 在 Windows10 + VS2017 + Qt 5.12 环境下编译安装</a></li></ul>]]></content>
+    
+    
+    <categories>
+      
+      <category>教程</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>VTK</tag>
+      
+      <tag>Qt</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>使用 GitHub Actions 自动部署 Hexo 博客</title>
     <link href="/posts/cdc6f5f3/"/>
     <url>/posts/cdc6f5f3/</url>
