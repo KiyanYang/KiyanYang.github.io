@@ -105,20 +105,20 @@ math: true
 
 - **效果**:
 
-  <img src="https://cdn.jsdelivr.net/gh/KiyanYang/Source/img/blog/common/pexels-photo-7175579.webp" alt="图片-1" width = "100" height = "100"></img>
+  <img src="/@img/common/flower_200x300.webp" alt="图片-1" width = "100" height = "100"></img>
 
-  <img src="https://cdn.jsdelivr.net/gh/KiyanYang/Source/img/blog/common/pexels-photo-7175579.webp" alt="图片-2" width = "100"></img>
+  <img src="/@img/common/flower_200x300.webp" alt="图片-2" width = "100"></img>
 
-  <img src="https://cdn.jsdelivr.net/gh/KiyanYang/Source/img/blog/common/pexels-photo-7175579.webp" alt="图片-3" width = 20% height = 20%></img>
+  <img src="/@img/common/flower_200x300.webp" alt="图片-3" width = 20% height = 20%></img>
 
 - **Markdown**
 
   ```html
-  <img src="https://cdn.jsdelivr.net/gh/KiyanYang/Source/img/blog/common/pexels-photo-7175579.webp" alt="图片-1" width = "100" height = "100"></img>
+  <img src="/@img/common/flower_200x300.webp" alt="图片-1" width = "100" height = "100"></img>
 
-  <img src="https://cdn.jsdelivr.net/gh/KiyanYang/Source/img/blog/common/pexels-photo-7175579.webp" alt="图片-2" width = "100"></img>
+  <img src="/@img/common/flower_200x300.webp" alt="图片-2" width = "100"></img>
 
-  <img src="https://cdn.jsdelivr.net/gh/KiyanYang/Source/img/blog/common/pexels-photo-7175579.webp" alt="图片-3" width = 20% height = 20%></img>
+  <img src="/@img/common/flower_200x300.webp" alt="图片-3" width = 20% height = 20%></img>
   ```
 
   `width` 和 `height` 可全写、或只写 1 个、或全部不写，其值可为数字或百分比。

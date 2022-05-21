@@ -634,14 +634,14 @@ Markdown 使用一种和链接很相似的语法来标记图片，同样也允�
 
 - **效果**
 
-  ![图片—1](https://cdn.jsdelivr.net/gh/KiyanYang/Source/img/blog/common/pexels-photo-7175579.webp)
-  ![图片-2](https://cdn.jsdelivr.net/gh/KiyanYang/Source/img/blog/common/pexels-photo-7175579.webp "自定义标题")
+  ![图片—1](/@img/common/flower_200x300.webp)
+  ![图片-2](/@img/common/flower_200x300.webp "自定义标题")
 
 - **Markdown**
 
   ```md_txt
-  ![图片-1](https://cdn.jsdelivr.net/gh/KiyanYang/Source/img/blog/common/pexels-photo-7175579.webp)
-  ![图片-2](https://cdn.jsdelivr.net/gh/KiyanYang/Source/img/blog/common/pexels-photo-7175579.webp "自定义标题")
+  ![图片-1](/@img/common/flower_200x300.webp)
+  ![图片-2](/@img/common/flower_200x300.webp "自定义标题")
   ```
 
 详细叙述如下：
