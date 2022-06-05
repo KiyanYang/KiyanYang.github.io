@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>VS Code on Kiyan Yang&#39;s Blog</title>
     <link>https://kiyanyang.github.io/tags/vs-code/</link>
     <description>Recent content in VS Code on Kiyan Yang&#39;s Blog</description>
+    <image>
+      <url>https://kiyanyang.github.io/papermod-cover.png</url>
+      <link>https://kiyanyang.github.io/papermod-cover.png</link>
+    </image>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Tue, 14 Dec 2021 13:50:25 +0800</lastBuildDate><atom:link href="https://kiyanyang.github.io/tags/vs-code/index.xml" rel="self" type="application/rss+xml" />
     <item>
@@ -12,7 +16,8 @@
       <pubDate>Tue, 14 Dec 2021 13:50:25 +0800</pubDate>
       
       <guid>https://kiyanyang.github.io/posts/5a271947/</guid>
-      <description></description>
+      <description>VS Code 中关于 Hexo 的任务（Tasks）。
+</description>
     </item>
     
     <item>
@@ -21,7 +26,8 @@
       <pubDate>Sat, 11 Dec 2021 13:05:49 +0800</pubDate>
       
       <guid>https://kiyanyang.github.io/posts/b66e483f/</guid>
-      <description></description>
+      <description>本文通过配置 VS Code 任务，使用 `Ctrl&#43;Shift&#43;B`（“运行生成任务”的快捷键）完成 Hexo 的清理、生成、开启本地预览，并且可以使用 VS Code 的“终端”菜单下的“运行命令”完成上述的单个命令。
+</description>
     </item>
     
   </channel>
