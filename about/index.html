@@ -10,7 +10,7 @@
 <meta name="description" content="博客地址 主要 GitHub Pages 镜像 Cloudflare Pages 感谢 博客系统 Hugo 博客主题 PaperMod 评论系统 Waline LeanCloud Blobcat 表情包 博客大事记 2022-06 迁至 Hugo 建站，博客主题为 hugo-PaperMod 2022-12 启用 Cloudflare Pages 镜像站 2021-11 使用 GitHub Action 自动部署 2021-07">
 <meta name="author" content="Kiyan">
 <link rel="canonical" href="https://kiyanyang.github.io/about/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.5934b98dd7df427e014e0c889779f49938e75fadc92ece7d3749c26950fe88f3.css" integrity="sha256-WTS5jdffQn4BTgyIl3n0mTjnX63JLs59N0nCaVD&#43;iPM=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.5c16e056fbd2b840e2a116eefc9fb4d2611c292931a17902925a6c116f92dee7.css" integrity="sha256-XBbgVvvSuEDioRbu/J&#43;00mEcKSkxoXkCklpsEW&#43;S3uc=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://kiyanyang.github.io/img/favicon.webp">
 <link rel="icon" type="image/png" sizes="16x16" href="https://kiyanyang.github.io/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="https://kiyanyang.github.io/favicon-32x32.png">
@@ -304,10 +304,32 @@ if (!doNotTrack) {
 
     
 
-  </footer><div id="waline"></div>
+  </footer>
+<footer id="comment"><div id="waline"></div>
 <script>
   Waline.init({"dark":".dark","el":"#waline","emoji":["/waline-blobcat-1.0","https://unpkg.com/@waline/emojis@1.0.1/bilibili","https://unpkg.com/@waline/emojis@1.0.1/weibo"],"imageUploader":false,"lang":"zh-CN","locale":{"placeholder":"评论的时候，留下在 Libravatar 上注册的邮箱即可显示头像哦。\n欢迎评论🎉🎉🎉\n"},"login":"enable","meta":["nick","mail"],"pageSize":10,"requiredMeta":[],"serverURL":"https://blog-waline-kiyanyang.vercel.app/","wordLimit":[2,512]});
 </script>
+<a href="#comment" aria-label="go to comment" title="Go to Comment (Alt + C)" class="top-link comment-link" id="comment-link" accesskey="c">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+       <path d="M511.1 63.1v287.1c0 35.25-28.75 63.1-64 63.1h-144l-124.9 93.68c-7.875 5.75-19.12 .0497-19.12-9.7v-83.98h-96c-35.25 0-64-28.75-64-63.1V63.1c0-35.25 28.75-63.1 64-63.1h384C483.2 0 511.1 28.75 511.1 63.1z" />
+    </svg>
+    </a>
+    <script>
+        let comment = document.getElementById("comment");
+        let btnToComment = document.getElementById("comment-link");
+        document.addEventListener("scroll", function () {
+            const e = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
+            const s = comment.offsetTop - document.documentElement.scrollTop;
+            if (s > e) {
+                btnToComment.style.visibility = "visible";
+                btnToComment.style.opacity = "1";
+            } else {
+                btnToComment.style.visibility = "hidden";
+                btnToComment.style.opacity = "0";
+            }
+        });
+    </script>
+</footer>
 
 </article>
     </main>
