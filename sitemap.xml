@@ -2,6 +2,21 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://kiyanyang.github.io/extras/open-source-software/</loc>
+    <lastmod>2022-05-21T15:52:49+08:00</lastmod>
+  </url><url>
+    <loc>https://kiyanyang.github.io/extras/management/</loc>
+    <lastmod>2022-06-05T20:20:25+08:00</lastmod>
+  </url><url>
+    <loc>https://kiyanyang.github.io/extras/open-source-games/</loc>
+    <lastmod>2022-05-21T15:52:49+08:00</lastmod>
+  </url><url>
+    <loc>https://kiyanyang.github.io/</loc>
+    <lastmod>2022-06-05T20:20:25+08:00</lastmod>
+  </url><url>
+    <loc>https://kiyanyang.github.io/extras/</loc>
+    <lastmod>2022-06-05T20:20:25+08:00</lastmod>
+  </url><url>
     <loc>https://kiyanyang.github.io/categories/</loc>
     <lastmod>2022-05-22T20:47:49+08:00</lastmod>
   </url><url>
@@ -9,9 +24,6 @@
     <lastmod>2022-05-22T20:47:49+08:00</lastmod>
   </url><url>
     <loc>https://kiyanyang.github.io/tags/hexo/</loc>
-    <lastmod>2022-05-22T20:47:49+08:00</lastmod>
-  </url><url>
-    <loc>https://kiyanyang.github.io/</loc>
     <lastmod>2022-05-22T20:47:49+08:00</lastmod>
   </url><url>
     <loc>https://kiyanyang.github.io/posts/</loc>

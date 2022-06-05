@@ -9,7 +9,37 @@
       <link>https://kiyanyang.github.io/papermod-cover.png</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sun, 22 May 2022 20:47:49 +0800</lastBuildDate><atom:link href="https://kiyanyang.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 05 Jun 2022 20:20:25 +0800</lastBuildDate><atom:link href="https://kiyanyang.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>我的开源软件</title>
+      <link>https://kiyanyang.github.io/extras/open-source-software/</link>
+      <pubDate>Tue, 14 Dec 2021 12:22:53 +0800</pubDate>
+      
+      <guid>https://kiyanyang.github.io/extras/open-source-software/</guid>
+      <description>我的开源软件。
+</description>
+    </item>
+    
+    <item>
+      <title>网站管理</title>
+      <link>https://kiyanyang.github.io/extras/management/</link>
+      <pubDate>Sun, 05 Jun 2022 20:20:25 +0800</pubDate>
+      
+      <guid>https://kiyanyang.github.io/extras/management/</guid>
+      <description>网站管理。
+</description>
+    </item>
+    
+    <item>
+      <title>开源小游戏</title>
+      <link>https://kiyanyang.github.io/extras/open-source-games/</link>
+      <pubDate>Mon, 13 Dec 2021 11:32:18 +0800</pubDate>
+      
+      <guid>https://kiyanyang.github.io/extras/open-source-games/</guid>
+      <description>开源小游戏。
+</description>
+    </item>
+    
     <item>
       <title>使用 Hexo 过滤器实现 Fluid 主题的代码折叠</title>
       <link>https://kiyanyang.github.io/posts/c4dd4019/</link>
