@@ -1,18 +1,1 @@
 User-agent: *
-
-Allow: /
-Allow: /about/
-Allow: /extras/
-Allow: /archives/
-Allow: /categories/
-Allow: /links/
-Allow: /posts/
-Allow: /tags/
-
-DisAllow: /css/
-DisAllow: /img/
-DisAllow: /js/
-DisAllow: /lib/
-DisAllow: /xml/
-
-Sitemap: https://mikolaje.github.io/sitemap.xml
