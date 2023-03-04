@@ -1,0 +1,12 @@
+{
+  "origins": [
+    "https://blog.dotvast.cc",
+    "https://kiyanyang.github.io",
+    "https://kiyanyang.pages.dev"
+  ],
+  "originsRegex": [
+    "https://[A-Za-z0-9]+\\.kiyanyang.pages.dev",
+    "http://localhost:[0-9]+"
+  ],
+  "defaultCommentOrder": "oldest"
+}
