@@ -1,1 +1,23 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>游戏 on Kiyan's Blog</title><link>https://kiyanyang.github.io/tags/game/</link><description>Recent content in 游戏 on Kiyan's Blog</description><image><title>Kiyan's Blog</title><url>https://kiyanyang.github.io/papermod-cover.png</url><link>https://kiyanyang.github.io/papermod-cover.png</link></image><generator>Hugo -- gohugo.io</generator><atom:link href="https://kiyanyang.github.io/tags/game/index.xml" rel="self" type="application/rss+xml"/><item><title>网页小游戏</title><link>https://kiyanyang.github.io/extras/open-source-games/</link><pubDate>Mon, 13 Dec 2021 11:32:18 +0800</pubDate><guid>https://kiyanyang.github.io/extras/open-source-games/</guid><description>开源的网页小游戏。</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>游戏 on Kiyan&#39;s Blog</title>
+    <link>https://kiyanyang.github.io/tags/game/</link>
+    <description>Recent content in 游戏 on Kiyan&#39;s Blog</description>
+    <image>
+      <title>Kiyan&#39;s Blog</title>
+      <url>https://kiyanyang.github.io/papermod-cover.png</url>
+      <link>https://kiyanyang.github.io/papermod-cover.png</link>
+    </image>
+    <generator>Hugo -- gohugo.io</generator><atom:link href="https://kiyanyang.github.io/tags/game/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>网页小游戏</title>
+      <link>https://kiyanyang.github.io/extras/open-source-games/</link>
+      <pubDate>Mon, 13 Dec 2021 11:32:18 +0800</pubDate>
+      
+      <guid>https://kiyanyang.github.io/extras/open-source-games/</guid>
+      <description>开源的网页小游戏。</description>
+    </item>
+    
+  </channel>
+</rss>
