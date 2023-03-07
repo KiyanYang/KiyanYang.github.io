@@ -10,7 +10,7 @@
 <meta name="description" content="基于 Hexo-Theme-Fluid 博客主题的简单美化和修改，效果参见本博客自身。">
 <meta name="author" content="Kiyan">
 <link rel="canonical" href="https://kiyanyang.github.io/posts/f92be1eb/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.afe2af48343daf380a85c67259d71fa913dd9c727e32da85a22abd76258d78e2.css" integrity="sha256-r&#43;KvSDQ9rzgKhcZyWdcfqRPdnHJ&#43;MtqFoiq9diWNeOI=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.acdb903970acefb6cbc765031c2a6371e7a850a8de1c8f60d72071425280f2ed.css" integrity="sha256-rNuQOXCs77bLx2UDHCpjceeoUKjeHI9g1yBxQlKA8u0=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://kiyanyang.github.io/img/favicon.webp">
 <link rel="icon" type="image/png" sizes="16x16" href="https://kiyanyang.github.io/img/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="https://kiyanyang.github.io/img/favicon-32x32.png">
@@ -56,14 +56,18 @@
     </style>
 </noscript>
 
-<link crossorigin="anonymous" href="/assets/scss/bundle.0ec710400a831bb40b6b07529f52d0110cefede1e311a7afc8c83234f49cea8f.css" integrity="sha256-DscQQAqDG7QLawdSn1LQEQzv7eHjEaevyMgyNPSc6o8=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/scss/bundle.8a2db8fadbec327a69142f4527c3b3447ce68561c672fdbe4928e3b0077b9067.css" integrity="sha256-ii24&#43;tvsMnppFC9FJ8OzRHzmhWHGcv2&#43;SSjjsAd7kGc=" rel="preload stylesheet" as="style">
+
+
+
+<script defer src="/assets/js/bundle.e89e5029da6dea75bdb8870a8c2cd07bb8143da096ee796e9b9cd68004d4e1e6.js" crossorigin="anonymous"></script>
+
 
 
 <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&amp;family=Noto&#43;Sans&#43;SC:wght@400;500;700&amp;display=swap" as="style" onload="this.onload=null;this.rel='stylesheet';" crossorigin>
-<script defer src="https://lib.baomitu.com/twitter-bootstrap/5.2.3/js/bootstrap.min.js" crossorigin="anonymous"></script>
-<script defer src="https://lib.baomitu.com/waline/2.14.8/pageview.min.js" crossorigin="anonymous" onload="Waline.pageviewCount({serverURL: 'https:\/\/waline.dotvast.cc\/'});"></script>
+<script defer src="" crossorigin="anonymous" onload="Waline.pageviewCount({serverURL: ''});"></script>
 <meta property="og:title" content="Hexo-Fluid 博客美化和修改" />
 <meta property="og:description" content="基于 Hexo-Theme-Fluid 博客主题的简单美化和修改，效果参见本博客自身。" />
 <meta property="og:type" content="article" />
@@ -226,40 +230,40 @@
 
 
 </div>
-  </header> 
-<div class="toc">
-    <button class="collapsed" type="button" aria-label="切换目录折叠状态" data-bs-toggle="collapse" data-bs-target="#collapse-toc">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
-        <b>目录</b>
-    </button>
-    <div class="collapse " id="collapse-toc">
-    <div class="inner"><ul>
-            <li>
-                <a href="#%e5%89%8d%e7%bd%ae%e8%af%b4%e6%98%8e" aria-label="前置说明">前置说明</a></li>
-            <li>
-                <a href="#%e6%bb%9a%e5%8a%a8%e6%9d%a1" aria-label="滚动条">滚动条</a></li>
-            <li>
-                <a href="#%e4%bb%a3%e7%a0%81%e5%9d%97%e7%9a%84%e5%a4%8d%e5%88%b6%e6%8c%89%e9%92%ae" aria-label="代码块的复制按钮">代码块的复制按钮</a></li>
-            <li>
-                <a href="#%e5%9c%86%e8%a7%92" aria-label="圆角">圆角</a></li>
-            <li>
-                <a href="#waline-%e8%af%84%e8%ae%ba" aria-label="Waline 评论">Waline 评论</a></li>
-            <li>
-                <a href="#%e7%bd%91%e7%ab%99%e8%bf%90%e8%a1%8c%e6%97%b6%e9%97%b4" aria-label="网站运行时间">网站运行时间</a></li>
-            <li>
-                <a href="#%e5%b7%b2%e8%bf%87%e6%97%b6" aria-label="已过时">已过时</a><ul>
-                    
-            <li>
-                <a href="#%e4%bb%a3%e7%a0%81%e5%9d%97%e7%9a%84%e9%a6%96%e5%88%97%e5%9b%ba%e5%ae%9a" aria-label="代码块的首列固定">代码块的首列固定</a></li>
-            <li>
-                <a href="#%e7%9b%ae%e5%bd%95%e6%a0%87%e9%a2%98%e5%89%8d%e7%9a%84%e5%85%89%e6%a0%87" aria-label="目录标题前的光标">目录标题前的光标</a></li></ul>
-            </li>
-            <li>
-                <a href="#%e5%8f%82%e8%80%83" aria-label="参考">参考</a>
-            </li>
-        </ul>
-    </div>
-    </div>
+  </header> <div class="toc">
+    <details>
+        <summary class="details-closed" accesskey="c" title="(Alt + C)">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            <span class="details">目录</span>
+        </summary>
+
+        <div class="inner"><ul>
+                <li>
+                    <a href="#%e5%89%8d%e7%bd%ae%e8%af%b4%e6%98%8e" aria-label="前置说明">前置说明</a></li>
+                <li>
+                    <a href="#%e6%bb%9a%e5%8a%a8%e6%9d%a1" aria-label="滚动条">滚动条</a></li>
+                <li>
+                    <a href="#%e4%bb%a3%e7%a0%81%e5%9d%97%e7%9a%84%e5%a4%8d%e5%88%b6%e6%8c%89%e9%92%ae" aria-label="代码块的复制按钮">代码块的复制按钮</a></li>
+                <li>
+                    <a href="#%e5%9c%86%e8%a7%92" aria-label="圆角">圆角</a></li>
+                <li>
+                    <a href="#waline-%e8%af%84%e8%ae%ba" aria-label="Waline 评论">Waline 评论</a></li>
+                <li>
+                    <a href="#%e7%bd%91%e7%ab%99%e8%bf%90%e8%a1%8c%e6%97%b6%e9%97%b4" aria-label="网站运行时间">网站运行时间</a></li>
+                <li>
+                    <a href="#%e5%b7%b2%e8%bf%87%e6%97%b6" aria-label="已过时">已过时</a><ul>
+                        
+                <li>
+                    <a href="#%e4%bb%a3%e7%a0%81%e5%9d%97%e7%9a%84%e9%a6%96%e5%88%97%e5%9b%ba%e5%ae%9a" aria-label="代码块的首列固定">代码块的首列固定</a></li>
+                <li>
+                    <a href="#%e7%9b%ae%e5%bd%95%e6%a0%87%e9%a2%98%e5%89%8d%e7%9a%84%e5%85%89%e6%a0%87" aria-label="目录标题前的光标">目录标题前的光标</a></li></ul>
+                </li>
+                <li>
+                    <a href="#%e5%8f%82%e8%80%83" aria-label="参考">参考</a>
+                </li>
+            </ul>
+        </div>
+    </details>
 </div>
 
   <div class="post-content"><p><strong>注意：本站已迁移至 Hugo。请访问本站「<a href="https://5c61b2c4.kiyanyang.pages.dev/posts/f92be1eb/">历史节点</a>」获取有关 Hexo 的内容。</strong></p>
@@ -273,14 +277,11 @@
 <p>下面所描述的样式代码使用 <code>stylus</code> 格式，请自行在 <code>source/css</code> 目录下新建 <code>&lt;fileName&gt;.styl</code> 文件，并在主题配置的 <code>custom_css</code> 添加文件路径（不带文件扩展名）。</p>
 <p>比如新建了 <code>source/css/test.styl</code> 文件，那就要在主题配置的 <code>custom_css</code> 添加 <code>/css/test</code>：</p>
 
-
-
-<div class="codeblock">
-    <button type="button" aria-label="切换代码块折叠状态" data-bs-toggle="collapse" data-bs-target="#collapse-c0012f1a80">
+<details class="codeblock" open>
+    <summary>
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
         <b>YAML</b>
-    </button>
-    <div class="collapse show" id="collapse-c0012f1a80"><div class="highlight"><div class="chroma">
+    </summary><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
@@ -289,19 +290,15 @@
 <pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">custom_css</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span>- <span class="l">/css/test</span></span></span></code></pre></td></tr></table>
 </div>
-</div></div>
-</div>
+</div></details>
 
 <h2 id="滚动条">滚动条<a hidden class="anchor" aria-hidden="true" href="#滚动条">#</a></h2>
 
-
-
-<div class="codeblock">
-    <button type="button" aria-label="切换代码块折叠状态" data-bs-toggle="collapse" data-bs-target="#collapse-c0012f1c80">
+<details class="codeblock" open>
+    <summary>
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
         <b>Stylus</b>
-    </button>
-    <div class="collapse show" id="collapse-c0012f1c80"><div class="highlight"><div class="chroma">
+    </summary><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
@@ -378,19 +375,15 @@
 </span></span><span class="line"><span class="cl">  <span class="p">}</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></table>
 </div>
-</div></div>
-</div>
+</div></details>
 
 <h2 id="代码块的复制按钮">代码块的复制按钮<a hidden class="anchor" aria-hidden="true" href="#代码块的复制按钮">#</a></h2>
 
-
-
-<div class="codeblock">
-    <button type="button" aria-label="切换代码块折叠状态" data-bs-toggle="collapse" data-bs-target="#collapse-c0005e0200">
+<details class="codeblock" open>
+    <summary>
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
         <b>Stylus</b>
-    </button>
-    <div class="collapse show" id="collapse-c0005e0200"><div class="highlight"><div class="chroma">
+    </summary><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
@@ -427,8 +420,7 @@
 </span></span><span class="line"><span class="cl">  <span class="p">}</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></table>
 </div>
-</div></div>
-</div>
+</div></details>
 
 <h2 id="圆角">圆角<a hidden class="anchor" aria-hidden="true" href="#圆角">#</a></h2>
 <p>包括对如下内容设置圆角：</p>
@@ -440,14 +432,11 @@
 <li>返回顶部按钮</li>
 </ul>
 
-
-
-<div class="codeblock">
-    <button type="button" aria-label="切换代码块折叠状态" data-bs-toggle="collapse" data-bs-target="#collapse-c0005e0680">
+<details class="codeblock" open>
+    <summary>
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
         <b>Stylus</b>
-    </button>
-    <div class="collapse show" id="collapse-c0005e0680"><div class="highlight"><div class="chroma">
+    </summary><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
@@ -560,20 +549,16 @@
 </span></span><span class="line"><span class="cl">  <span class="py">border</span><span class="o">-</span><span class="err">radius</span><span class="p">:</span> <span class="err">0</span><span class="p">.</span><span class="nc">5rem</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></table>
 </div>
-</div></div>
-</div>
+</div></details>
 
 <h2 id="waline-评论">Waline 评论<a hidden class="anchor" aria-hidden="true" href="#waline-评论">#</a></h2>
 <p>适用版本：Waline v2</p>
 
-
-
-<div class="codeblock">
-    <button type="button" aria-label="切换代码块折叠状态" data-bs-toggle="collapse" data-bs-target="#collapse-c0005e0a00">
+<details class="codeblock" open>
+    <summary>
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
         <b>Stylus</b>
-    </button>
-    <div class="collapse show" id="collapse-c0005e0a00"><div class="highlight"><div class="chroma">
+    </summary><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
@@ -642,20 +627,16 @@
 </span></span><span class="line"><span class="cl">  <span class="p">}</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></table>
 </div>
-</div></div>
-</div>
+</div></details>
 
 <h2 id="网站运行时间">网站运行时间<a hidden class="anchor" aria-hidden="true" href="#网站运行时间">#</a></h2>
 <p>在主题配置中的 <code>footer: content</code> 添加：</p>
 
-
-
-<div class="codeblock">
-    <button type="button" aria-label="切换代码块折叠状态" data-bs-toggle="collapse" data-bs-target="#collapse-c0016f6180">
+<details class="codeblock" open>
+    <summary>
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
         <b>YAML</b>
-    </button>
-    <div class="collapse show" id="collapse-c0016f6180"><div class="highlight"><div class="chroma">
+    </summary><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
@@ -680,19 +661,15 @@
 </span></span></span><span class="line"><span class="cl"><span class="sd">      &lt;script src=&#34;/js/duration.js&#34;&gt;&lt;/script&gt;
 </span></span></span><span class="line"><span class="cl"><span class="sd">    &lt;/div&gt;</span><span class="w">    </span></span></span></code></pre></td></tr></table>
 </div>
-</div></div>
-</div>
+</div></details>
 
 <p>duration.js 包含的是功能代码，在博客目录下创建 <code>source/js/duration.js</code>，内容如下：</p>
 
-
-
-<div class="codeblock">
-    <button type="button" aria-label="切换代码块折叠状态" data-bs-toggle="collapse" data-bs-target="#collapse-c0016f6300">
+<details class="codeblock" open>
+    <summary>
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
         <b>JavaScript</b>
-    </button>
-    <div class="collapse show" id="collapse-c0016f6300"><div class="highlight"><div class="chroma">
+    </summary><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
@@ -755,21 +732,17 @@
 </span></span><span class="line"><span class="cl">  <span class="nx">setInterval</span><span class="p">(</span><span class="nx">update</span><span class="p">,</span> <span class="mi">250</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl"><span class="p">})();</span></span></span></code></pre></td></tr></table>
 </div>
-</div></div>
-</div>
+</div></details>
 
 <h2 id="已过时">已过时<a hidden class="anchor" aria-hidden="true" href="#已过时">#</a></h2>
 <h3 id="代码块的首列固定">代码块的首列固定<a hidden class="anchor" aria-hidden="true" href="#代码块的首列固定">#</a></h3>
 <p><strong>此内容已过时。Hexo-Theme-Fluid 自 v1.8.14 起添加了此功能。</strong></p>
 
-
-
-<div class="codeblock">
-    <button type="button" aria-label="切换代码块折叠状态" data-bs-toggle="collapse" data-bs-target="#collapse-c0016f6c00">
+<details class="codeblock" open>
+    <summary>
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
         <b>Stylus</b>
-    </button>
-    <div class="collapse show" id="collapse-c0016f6c00"><div class="highlight"><div class="chroma">
+    </summary><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
@@ -788,21 +761,17 @@
 </span></span><span class="line"><span class="cl">  <span class="p">}</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></table>
 </div>
-</div></div>
-</div>
+</div></details>
 
 <h3 id="目录标题前的光标">目录标题前的光标<a hidden class="anchor" aria-hidden="true" href="#目录标题前的光标">#</a></h3>
 <p><strong>此内容已过时，Hexo-Theme-Fluid 自 v1.8.14 起添加了此功能。</strong></p>
 <p>关于目录标题前的光标的详细描述可以参见“<a href="/posts/277e1260/">Hexo-Fluid 在目录的标题前增加光标</a>”。</p>
 
-
-
-<div class="codeblock">
-    <button type="button" aria-label="切换代码块折叠状态" data-bs-toggle="collapse" data-bs-target="#collapse-c0016f6d80">
+<details class="codeblock" open>
+    <summary>
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
         <b>Stylus</b>
-    </button>
-    <div class="collapse show" id="collapse-c0016f6d80"><div class="highlight"><div class="chroma">
+    </summary><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
@@ -889,8 +858,7 @@
 </span></span><span class="line"><span class="cl">  <span class="p">}</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></table>
 </div>
-</div></div>
-</div>
+</div></details>
 
 <h2 id="参考">参考<a hidden class="anchor" aria-hidden="true" href="#参考">#</a></h2>
 <ul>

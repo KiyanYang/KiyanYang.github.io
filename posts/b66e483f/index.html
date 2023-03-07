@@ -10,7 +10,7 @@
 <meta name="description" content="本文通过配置 VS Code 任务，使用 Ctrl&#43;Shift&#43;B（“运行生成任务”的快捷键）完成 Hexo 的清理、生成、开启本地预览，并且可以使用 VS Code 的“终端”菜单下的“运行命令”完成上述的单个命令。">
 <meta name="author" content="Kiyan">
 <link rel="canonical" href="https://kiyanyang.github.io/posts/b66e483f/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.afe2af48343daf380a85c67259d71fa913dd9c727e32da85a22abd76258d78e2.css" integrity="sha256-r&#43;KvSDQ9rzgKhcZyWdcfqRPdnHJ&#43;MtqFoiq9diWNeOI=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.acdb903970acefb6cbc765031c2a6371e7a850a8de1c8f60d72071425280f2ed.css" integrity="sha256-rNuQOXCs77bLx2UDHCpjceeoUKjeHI9g1yBxQlKA8u0=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://kiyanyang.github.io/img/favicon.webp">
 <link rel="icon" type="image/png" sizes="16x16" href="https://kiyanyang.github.io/img/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="https://kiyanyang.github.io/img/favicon-32x32.png">
@@ -56,14 +56,18 @@
     </style>
 </noscript>
 
-<link crossorigin="anonymous" href="/assets/scss/bundle.0ec710400a831bb40b6b07529f52d0110cefede1e311a7afc8c83234f49cea8f.css" integrity="sha256-DscQQAqDG7QLawdSn1LQEQzv7eHjEaevyMgyNPSc6o8=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/scss/bundle.8a2db8fadbec327a69142f4527c3b3447ce68561c672fdbe4928e3b0077b9067.css" integrity="sha256-ii24&#43;tvsMnppFC9FJ8OzRHzmhWHGcv2&#43;SSjjsAd7kGc=" rel="preload stylesheet" as="style">
+
+
+
+<script defer src="/assets/js/bundle.e89e5029da6dea75bdb8870a8c2cd07bb8143da096ee796e9b9cd68004d4e1e6.js" crossorigin="anonymous"></script>
+
 
 
 <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&amp;family=Noto&#43;Sans&#43;SC:wght@400;500;700&amp;display=swap" as="style" onload="this.onload=null;this.rel='stylesheet';" crossorigin>
-<script defer src="https://lib.baomitu.com/twitter-bootstrap/5.2.3/js/bootstrap.min.js" crossorigin="anonymous"></script>
-<script defer src="https://lib.baomitu.com/waline/2.14.8/pageview.min.js" crossorigin="anonymous" onload="Waline.pageviewCount({serverURL: 'https:\/\/waline.dotvast.cc\/'});"></script>
+<script defer src="" crossorigin="anonymous" onload="Waline.pageviewCount({serverURL: ''});"></script>
 <meta property="og:title" content="使用 VS Code 的任务（Tasks）便捷操作 Hexo" />
 <meta property="og:description" content="本文通过配置 VS Code 任务，使用 Ctrl&#43;Shift&#43;B（“运行生成任务”的快捷键）完成 Hexo 的清理、生成、开启本地预览，并且可以使用 VS Code 的“终端”菜单下的“运行命令”完成上述的单个命令。" />
 <meta property="og:type" content="article" />
@@ -226,38 +230,38 @@
 
 
 </div>
-  </header> 
-<div class="toc">
-    <button class="collapsed" type="button" aria-label="切换目录折叠状态" data-bs-toggle="collapse" data-bs-target="#collapse-toc">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
-        <b>目录</b>
-    </button>
-    <div class="collapse " id="collapse-toc">
-    <div class="inner"><ul>
-            <li>
-                <a href="#%e9%85%8d%e7%bd%ae-tasks" aria-label="配置 Tasks">配置 Tasks</a><ul>
-                    
-            <li>
-                <a href="#%e6%96%b0%e5%bb%ba-tasksjson" aria-label="新建 tasks.json">新建 <code>tasks.json</code></a></li>
-            <li>
-                <a href="#%e9%85%8d%e7%bd%ae%e5%8d%95%e4%b8%aa-hexo-%e5%91%bd%e4%bb%a4" aria-label="配置单个 Hexo 命令">配置单个 Hexo 命令</a></li>
-            <li>
-                <a href="#%e9%85%8d%e7%bd%ae%e5%a4%9a%e4%b8%aa-hexo-%e5%91%bd%e4%bb%a4" aria-label="配置多个 Hexo 命令">配置多个 Hexo 命令</a></li>
-            <li>
-                <a href="#%e9%85%8d%e7%bd%ae%e5%a4%9a%e4%b8%aa%e5%91%bd%e4%bb%a4%e7%9a%84%e9%a1%ba%e5%ba%8f%e6%89%a7%e8%a1%8c" aria-label="配置多个命令的顺序执行">配置多个命令的顺序执行</a></li></ul>
-            </li>
-            <li>
-                <a href="#%e6%89%a7%e8%a1%8c-tasks" aria-label="执行 Tasks">执行 Tasks</a></li>
-            <li>
-                <a href="#%e7%96%91%e9%97%ae%e4%b8%8e%e8%a7%a3%e7%ad%94" aria-label="疑问与解答">疑问与解答</a></li>
-            <li>
-                <a href="#%e9%99%84%e5%bd%95" aria-label="附录">附录</a></li>
-            <li>
-                <a href="#%e5%8f%82%e8%80%83" aria-label="参考">参考</a>
-            </li>
-        </ul>
-    </div>
-    </div>
+  </header> <div class="toc">
+    <details>
+        <summary class="details-closed" accesskey="c" title="(Alt + C)">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            <span class="details">目录</span>
+        </summary>
+
+        <div class="inner"><ul>
+                <li>
+                    <a href="#%e9%85%8d%e7%bd%ae-tasks" aria-label="配置 Tasks">配置 Tasks</a><ul>
+                        
+                <li>
+                    <a href="#%e6%96%b0%e5%bb%ba-tasksjson" aria-label="新建 tasks.json">新建 <code>tasks.json</code></a></li>
+                <li>
+                    <a href="#%e9%85%8d%e7%bd%ae%e5%8d%95%e4%b8%aa-hexo-%e5%91%bd%e4%bb%a4" aria-label="配置单个 Hexo 命令">配置单个 Hexo 命令</a></li>
+                <li>
+                    <a href="#%e9%85%8d%e7%bd%ae%e5%a4%9a%e4%b8%aa-hexo-%e5%91%bd%e4%bb%a4" aria-label="配置多个 Hexo 命令">配置多个 Hexo 命令</a></li>
+                <li>
+                    <a href="#%e9%85%8d%e7%bd%ae%e5%a4%9a%e4%b8%aa%e5%91%bd%e4%bb%a4%e7%9a%84%e9%a1%ba%e5%ba%8f%e6%89%a7%e8%a1%8c" aria-label="配置多个命令的顺序执行">配置多个命令的顺序执行</a></li></ul>
+                </li>
+                <li>
+                    <a href="#%e6%89%a7%e8%a1%8c-tasks" aria-label="执行 Tasks">执行 Tasks</a></li>
+                <li>
+                    <a href="#%e7%96%91%e9%97%ae%e4%b8%8e%e8%a7%a3%e7%ad%94" aria-label="疑问与解答">疑问与解答</a></li>
+                <li>
+                    <a href="#%e9%99%84%e5%bd%95" aria-label="附录">附录</a></li>
+                <li>
+                    <a href="#%e5%8f%82%e8%80%83" aria-label="参考">参考</a>
+                </li>
+            </ul>
+        </div>
+    </details>
 </div>
 
   <div class="post-content"><p><strong>注意：本站已迁移至 Hugo。请访问本站「<a href="https://5c61b2c4.kiyanyang.pages.dev/posts/b66e483f/">历史节点</a>」获取有关 Hexo 的内容。</strong></p>
@@ -272,14 +276,11 @@
 <h3 id="配置单个-hexo-命令">配置单个 Hexo 命令<a hidden class="anchor" aria-hidden="true" href="#配置单个-hexo-命令">#</a></h3>
 <p>以 <code>hexo generate</code> 命令为例，在 <code>tasks.json</code> 粘贴下面的代码。</p>
 
-
-
-<div class="codeblock">
-    <button type="button" aria-label="切换代码块折叠状态" data-bs-toggle="collapse" data-bs-target="#collapse-c00160cb00">
+<details class="codeblock" open>
+    <summary>
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
         <b>JSON</b>
-    </button>
-    <div class="collapse show" id="collapse-c00160cb00"><div class="highlight"><div class="chroma">
+    </summary><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
@@ -328,22 +329,18 @@
 </span></span><span class="line"><span class="cl">  <span class="p">]</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></table>
 </div>
-</div></div>
-</div>
+</div></details>
 
 <p>代码中的参数根据注释和名称自行理解，想要查看更多的参数信息或关于 <code>Tasks</code> 的信息可以访问<a href="https://code.visualstudio.com/Docs/editor/tasks">官方文档</a> 。</p>
 <p><strong>备注</strong>：上述任务中的 <code>presentation</code> 和 <code>problemMatcher</code> 是非必要的，但是实际使用时可以减少 VS Code 可能出现的询问次数。</p>
 <h3 id="配置多个-hexo-命令">配置多个 Hexo 命令<a hidden class="anchor" aria-hidden="true" href="#配置多个-hexo-命令">#</a></h3>
 <p>我们还需要按照上述增加其他命令，添加后的代码如下：</p>
 
-
-
-<div class="codeblock">
-    <button type="button" aria-label="切换代码块折叠状态" data-bs-toggle="collapse" data-bs-target="#collapse-c000d50400">
+<details class="codeblock" open>
+    <summary>
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
         <b>JSON</b>
-    </button>
-    <div class="collapse show" id="collapse-c000d50400"><div class="highlight"><div class="chroma">
+    </summary><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
@@ -424,21 +421,17 @@
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="p">]</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></table>
 </div>
-</div></div>
-</div>
+</div></details>
 
 <p><strong>备注</strong>：<code>tasks</code> 内的任务书写无顺序之分。</p>
 <h3 id="配置多个命令的顺序执行">配置多个命令的顺序执行<a hidden class="anchor" aria-hidden="true" href="#配置多个命令的顺序执行">#</a></h3>
 <p>代码如下：</p>
 
-
-
-<div class="codeblock">
-    <button type="button" aria-label="切换代码块折叠状态" data-bs-toggle="collapse" data-bs-target="#collapse-c000d51600">
+<details class="codeblock" open>
+    <summary>
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
         <b>JSON</b>
-    </button>
-    <div class="collapse show" id="collapse-c000d51600"><div class="highlight"><div class="chroma">
+    </summary><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
@@ -551,8 +544,7 @@
 </span></span><span class="line"><span class="cl">  <span class="p">]</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></table>
 </div>
-</div></div>
-</div>
+</div></details>
 
 <p>其中本例内 <code>group</code> 的设置是为了将任务 <code>local clear &amp; server</code> 设置为 VS Code “运行生成任务&hellip;”功能的默认任务，这样我们才能通过快捷键 <code>Ctrl+Shift+B</code> 执行此任务。</p>
 <p><strong>备注</strong>：新增的这个任务是一个自身不执行任何命令的任务。</p>
@@ -567,14 +559,11 @@
 <li>
 <p>为什么要创建 4 个任务，而不是将最后任务的依赖设为前两个，这样就只会有 3 个任务（比如如下代码），这难道不是更简洁吗？</p>
 
-
-
-<div class="codeblock">
-    <button type="button" aria-label="切换代码块折叠状态" data-bs-toggle="collapse" data-bs-target="#collapse-c000b36d00">
+<details class="codeblock" open>
+    <summary>
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
         <b>JSON</b>
-    </button>
-    <div class="collapse show" id="collapse-c000b36d00"><div class="highlight"><div class="chroma">
+    </summary><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
@@ -665,8 +654,7 @@
 </span></span><span class="line"><span class="cl">  <span class="p">]</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></table>
 </div>
-</div></div>
-</div>
+</div></details>
 
 <p><strong>解答</strong>：这样设置会导致无法使用单一的命令 <code>hexo server</code>，因为调用 <code>local server</code> 这个任务总会调用其他两个。当然如果你不需要有单独执行命令 <code>hexo server</code> 的任务，那你这样写也可以。</p>
 </li>

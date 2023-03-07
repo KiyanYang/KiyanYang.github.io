@@ -10,7 +10,7 @@
 <meta name="description" content="只使用基础 Markdown 无法满足一些常用需求，比如文字颜色、图片大小等。这时我们可以依托 Markdown 可与 HTML 混编的特性，直接在 Markdown 中使用 HTML，本文记录了一些常用的 HTML 语句。">
 <meta name="author" content="Kiyan">
 <link rel="canonical" href="https://kiyanyang.github.io/posts/89b5ce09/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.afe2af48343daf380a85c67259d71fa913dd9c727e32da85a22abd76258d78e2.css" integrity="sha256-r&#43;KvSDQ9rzgKhcZyWdcfqRPdnHJ&#43;MtqFoiq9diWNeOI=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.acdb903970acefb6cbc765031c2a6371e7a850a8de1c8f60d72071425280f2ed.css" integrity="sha256-rNuQOXCs77bLx2UDHCpjceeoUKjeHI9g1yBxQlKA8u0=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://kiyanyang.github.io/img/favicon.webp">
 <link rel="icon" type="image/png" sizes="16x16" href="https://kiyanyang.github.io/img/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="https://kiyanyang.github.io/img/favicon-32x32.png">
@@ -56,14 +56,18 @@
     </style>
 </noscript>
 
-<link crossorigin="anonymous" href="/assets/scss/bundle.0ec710400a831bb40b6b07529f52d0110cefede1e311a7afc8c83234f49cea8f.css" integrity="sha256-DscQQAqDG7QLawdSn1LQEQzv7eHjEaevyMgyNPSc6o8=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/scss/bundle.8a2db8fadbec327a69142f4527c3b3447ce68561c672fdbe4928e3b0077b9067.css" integrity="sha256-ii24&#43;tvsMnppFC9FJ8OzRHzmhWHGcv2&#43;SSjjsAd7kGc=" rel="preload stylesheet" as="style">
+
+
+
+<script defer src="/assets/js/bundle.e89e5029da6dea75bdb8870a8c2cd07bb8143da096ee796e9b9cd68004d4e1e6.js" crossorigin="anonymous"></script>
+
 
 
 <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&amp;family=Noto&#43;Sans&#43;SC:wght@400;500;700&amp;display=swap" as="style" onload="this.onload=null;this.rel='stylesheet';" crossorigin>
-<script defer src="https://lib.baomitu.com/twitter-bootstrap/5.2.3/js/bootstrap.min.js" crossorigin="anonymous"></script>
-<script defer src="https://lib.baomitu.com/waline/2.14.8/pageview.min.js" crossorigin="anonymous" onload="Waline.pageviewCount({serverURL: 'https:\/\/waline.dotvast.cc\/'});"></script>
+<script defer src="" crossorigin="anonymous" onload="Waline.pageviewCount({serverURL: ''});"></script>
 <meta property="og:title" content="Markdown 语法 拓展篇" />
 <meta property="og:description" content="只使用基础 Markdown 无法满足一些常用需求，比如文字颜色、图片大小等。这时我们可以依托 Markdown 可与 HTML 混编的特性，直接在 Markdown 中使用 HTML，本文记录了一些常用的 HTML 语句。" />
 <meta property="og:type" content="article" />
@@ -226,39 +230,39 @@
 
 
 </div>
-  </header> 
-<div class="toc">
-    <button class="collapsed" type="button" aria-label="切换目录折叠状态" data-bs-toggle="collapse" data-bs-target="#collapse-toc">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
-        <b>目录</b>
-    </button>
-    <div class="collapse " id="collapse-toc">
-    <div class="inner"><ul>
-            <li>
-                <a href="#%e9%a2%9c%e8%89%b2" aria-label="颜色">颜色</a></li>
-            <li>
-                <a href="#%e5%a4%a7%e5%b0%8f" aria-label="大小">大小</a></li>
-            <li>
-                <a href="#%e4%bd%8d%e7%bd%ae" aria-label="位置">位置</a></li>
-            <li>
-                <a href="#%e6%8a%98%e5%8f%a0" aria-label="折叠">折叠</a></li>
-            <li>
-                <a href="#%e5%9b%be%e7%89%87" aria-label="图片">图片</a></li>
-            <li>
-                <a href="#%e8%a1%a8%e6%a0%bc" aria-label="表格">表格</a><ul>
-                    
-            <li>
-                <a href="#%e6%99%ae%e9%80%9a%e8%a1%a8%e6%a0%bc" aria-label="普通表格">普通表格</a></li>
-            <li>
-                <a href="#%e7%ba%b5%e5%90%91%e5%90%88%e5%b9%b6%e5%8d%95%e5%85%83%e6%a0%bc" aria-label="纵向合并单元格">纵向合并单元格</a></li>
-            <li>
-                <a href="#%e6%a8%aa%e5%90%91%e5%90%88%e5%b9%b6%e5%8d%95%e5%85%83%e6%a0%bc" aria-label="横向合并单元格">横向合并单元格</a>
+  </header> <div class="toc">
+    <details>
+        <summary class="details-closed" accesskey="c" title="(Alt + C)">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            <span class="details">目录</span>
+        </summary>
+
+        <div class="inner"><ul>
+                <li>
+                    <a href="#%e9%a2%9c%e8%89%b2" aria-label="颜色">颜色</a></li>
+                <li>
+                    <a href="#%e5%a4%a7%e5%b0%8f" aria-label="大小">大小</a></li>
+                <li>
+                    <a href="#%e4%bd%8d%e7%bd%ae" aria-label="位置">位置</a></li>
+                <li>
+                    <a href="#%e6%8a%98%e5%8f%a0" aria-label="折叠">折叠</a></li>
+                <li>
+                    <a href="#%e5%9b%be%e7%89%87" aria-label="图片">图片</a></li>
+                <li>
+                    <a href="#%e8%a1%a8%e6%a0%bc" aria-label="表格">表格</a><ul>
+                        
+                <li>
+                    <a href="#%e6%99%ae%e9%80%9a%e8%a1%a8%e6%a0%bc" aria-label="普通表格">普通表格</a></li>
+                <li>
+                    <a href="#%e7%ba%b5%e5%90%91%e5%90%88%e5%b9%b6%e5%8d%95%e5%85%83%e6%a0%bc" aria-label="纵向合并单元格">纵向合并单元格</a></li>
+                <li>
+                    <a href="#%e6%a8%aa%e5%90%91%e5%90%88%e5%b9%b6%e5%8d%95%e5%85%83%e6%a0%bc" aria-label="横向合并单元格">横向合并单元格</a>
+                </li>
+            </ul>
             </li>
-        </ul>
-        </li>
-        </ul>
-    </div>
-    </div>
+            </ul>
+        </div>
+    </details>
 </div>
 
   <div class="post-content"><!-- markdownlint-disable-file MD033 -->
@@ -272,22 +276,18 @@
 <li>
 <p><strong>Markdown</strong></p>
 
-
-
-<div class="codeblock">
-    <button type="button" aria-label="切换代码块折叠状态" data-bs-toggle="collapse" data-bs-target="#collapse-c001d29000">
+<details class="codeblock" open>
+    <summary>
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
         <b>HTML</b>
-    </button>
-    <div class="collapse show" id="collapse-c001d29000"><div class="highlight"><div class="chroma">
+    </summary><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">span</span> <span class="na">style</span><span class="o">=</span><span class="s">&#34;color: #123ABC;&#34;</span><span class="p">&gt;</span>#123ABC 颜色<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span></span></span></code></pre></td></tr></table>
 </div>
-</div></div>
-</div>
+</div></details>
 
 </li>
 </ul>
@@ -300,22 +300,18 @@
 <li>
 <p><strong>Markdown</strong></p>
 
-
-
-<div class="codeblock">
-    <button type="button" aria-label="切换代码块折叠状态" data-bs-toggle="collapse" data-bs-target="#collapse-c001d29300">
+<details class="codeblock" open>
+    <summary>
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
         <b>HTML</b>
-    </button>
-    <div class="collapse show" id="collapse-c001d29300"><div class="highlight"><div class="chroma">
+    </summary><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">span</span> <span class="na">style</span><span class="o">=</span><span class="s">&#34;font-size:0.85em;&#34;</span><span class="p">&gt;</span>0.85em 文字大小<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span></span></span></code></pre></td></tr></table>
 </div>
-</div></div>
-</div>
+</div></details>
 
 </li>
 </ul>
@@ -328,22 +324,18 @@
 <li>
 <p><strong>Markdown</strong></p>
 
-
-
-<div class="codeblock">
-    <button type="button" aria-label="切换代码块折叠状态" data-bs-toggle="collapse" data-bs-target="#collapse-c001d29500">
+<details class="codeblock" open>
+    <summary>
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
         <b>HTML</b>
-    </button>
-    <div class="collapse show" id="collapse-c001d29500"><div class="highlight"><div class="chroma">
+    </summary><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">div</span> <span class="na">align</span><span class="o">=</span><span class="s">&#34;center&#34;</span><span class="p">&gt;</span>居中<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span></span></span></code></pre></td></tr></table>
 </div>
-</div></div>
-</div>
+</div></details>
 
 <p>位置可选值：<code>left | center | right</code>。</p>
 </li>
@@ -380,14 +372,11 @@
 <li>
 <p><strong>Markdown</strong></p>
 
-
-
-<div class="codeblock">
-    <button type="button" aria-label="切换代码块折叠状态" data-bs-toggle="collapse" data-bs-target="#collapse-c001d29700">
+<details class="codeblock" open>
+    <summary>
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
         <b>Markdown</b>
-    </button>
-    <div class="collapse show" id="collapse-c001d29700"><div class="highlight"><div class="chroma">
+    </summary><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
@@ -410,8 +399,7 @@
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">details</span><span class="p">&gt;</span></span></span></code></pre></td></tr></table>
 </div>
-</div></div>
-</div>
+</div></details>
 
 <p><code>summary</code> 填写显示名称。</p>
 </li>
@@ -431,14 +419,11 @@
 <li>
 <p><strong>Markdown</strong></p>
 
-
-
-<div class="codeblock">
-    <button type="button" aria-label="切换代码块折叠状态" data-bs-toggle="collapse" data-bs-target="#collapse-c001d29c00">
+<details class="codeblock" open>
+    <summary>
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
         <b>HTML</b>
-    </button>
-    <div class="collapse show" id="collapse-c001d29c00"><div class="highlight"><div class="chroma">
+    </summary><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
@@ -453,8 +438,7 @@
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">&#34;/img/common/flower_200x300.webp&#34;</span> <span class="na">alt</span><span class="o">=</span><span class="s">&#34;图片-3&#34;</span> <span class="na">width</span><span class="o">=</span><span class="s">&#34;20%&#34;</span> <span class="na">height</span><span class="o">=</span><span class="s">&#34;20%&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">img</span><span class="p">&gt;</span></span></span></code></pre></td></tr></table>
 </div>
-</div></div>
-</div>
+</div></details>
 
 <p><code>width</code> 和 <code>height</code> 可全写、或只写 1 个、或全部不写，其值可为数字或百分比。</p>
 </li>
@@ -486,14 +470,11 @@
 <li>
 <p><strong>Markdown</strong></p>
 
-
-
-<div class="codeblock">
-    <button type="button" aria-label="切换代码块折叠状态" data-bs-toggle="collapse" data-bs-target="#collapse-c001d29f00">
+<details class="codeblock" open>
+    <summary>
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
         <b>HTML</b>
-    </button>
-    <div class="collapse show" id="collapse-c001d29f00"><div class="highlight"><div class="chroma">
+    </summary><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
@@ -532,8 +513,7 @@
 </span></span><span class="line"><span class="cl">  <span class="p">&lt;/</span><span class="nt">tr</span><span class="p">&gt;</span>
 </span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">table</span><span class="p">&gt;</span></span></span></code></pre></td></tr></table>
 </div>
-</div></div>
-</div>
+</div></details>
 
 </li>
 </ul>
@@ -561,14 +541,11 @@
 <li>
 <p><strong>Markdown</strong></p>
 
-
-
-<div class="codeblock">
-    <button type="button" aria-label="切换代码块折叠状态" data-bs-toggle="collapse" data-bs-target="#collapse-c001e34700">
+<details class="codeblock" open>
+    <summary>
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
         <b>HTML</b>
-    </button>
-    <div class="collapse show" id="collapse-c001e34700"><div class="highlight"><div class="chroma">
+    </summary><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
@@ -605,8 +582,7 @@
 </span></span><span class="line"><span class="cl">  <span class="p">&lt;/</span><span class="nt">tr</span><span class="p">&gt;</span>
 </span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">table</span><span class="p">&gt;</span></span></span></code></pre></td></tr></table>
 </div>
-</div></div>
-</div>
+</div></details>
 
 </li>
 </ul>
@@ -634,14 +610,11 @@
 <li>
 <p><strong>Markdown</strong></p>
 
-
-
-<div class="codeblock">
-    <button type="button" aria-label="切换代码块折叠状态" data-bs-toggle="collapse" data-bs-target="#collapse-c00135a000">
+<details class="codeblock" open>
+    <summary>
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
         <b>HTML</b>
-    </button>
-    <div class="collapse show" id="collapse-c00135a000"><div class="highlight"><div class="chroma">
+    </summary><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
@@ -678,8 +651,7 @@
 </span></span><span class="line"><span class="cl">  <span class="p">&lt;/</span><span class="nt">tr</span><span class="p">&gt;</span>
 </span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">table</span><span class="p">&gt;</span></span></span></code></pre></td></tr></table>
 </div>
-</div></div>
-</div>
+</div></details>
 
 </li>
 </ul>

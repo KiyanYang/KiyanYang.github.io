@@ -10,7 +10,7 @@
 <meta name="description" content="WinUI 3 自动支持深色和浅色主题，但是其原生标题栏却没有自动支持，本文通过调用非公开的 Windows API 为 WinUI 3 标题栏原生菜单添加深色主题支持。">
 <meta name="author" content="Kiyan">
 <link rel="canonical" href="https://kiyanyang.github.io/posts/43fb94d0/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.afe2af48343daf380a85c67259d71fa913dd9c727e32da85a22abd76258d78e2.css" integrity="sha256-r&#43;KvSDQ9rzgKhcZyWdcfqRPdnHJ&#43;MtqFoiq9diWNeOI=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.acdb903970acefb6cbc765031c2a6371e7a850a8de1c8f60d72071425280f2ed.css" integrity="sha256-rNuQOXCs77bLx2UDHCpjceeoUKjeHI9g1yBxQlKA8u0=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://kiyanyang.github.io/img/favicon.webp">
 <link rel="icon" type="image/png" sizes="16x16" href="https://kiyanyang.github.io/img/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="https://kiyanyang.github.io/img/favicon-32x32.png">
@@ -56,14 +56,18 @@
     </style>
 </noscript>
 
-<link crossorigin="anonymous" href="/assets/scss/bundle.0ec710400a831bb40b6b07529f52d0110cefede1e311a7afc8c83234f49cea8f.css" integrity="sha256-DscQQAqDG7QLawdSn1LQEQzv7eHjEaevyMgyNPSc6o8=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/scss/bundle.8a2db8fadbec327a69142f4527c3b3447ce68561c672fdbe4928e3b0077b9067.css" integrity="sha256-ii24&#43;tvsMnppFC9FJ8OzRHzmhWHGcv2&#43;SSjjsAd7kGc=" rel="preload stylesheet" as="style">
+
+
+
+<script defer src="/assets/js/bundle.e89e5029da6dea75bdb8870a8c2cd07bb8143da096ee796e9b9cd68004d4e1e6.js" crossorigin="anonymous"></script>
+
 
 
 <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&amp;family=Noto&#43;Sans&#43;SC:wght@400;500;700&amp;display=swap" as="style" onload="this.onload=null;this.rel='stylesheet';" crossorigin>
-<script defer src="https://lib.baomitu.com/twitter-bootstrap/5.2.3/js/bootstrap.min.js" crossorigin="anonymous"></script>
-<script defer src="https://lib.baomitu.com/waline/2.14.8/pageview.min.js" crossorigin="anonymous" onload="Waline.pageviewCount({serverURL: 'https:\/\/waline.dotvast.cc\/'});"></script>
+<script defer src="" crossorigin="anonymous" onload="Waline.pageviewCount({serverURL: ''});"></script>
 <meta property="og:title" content="为 WinUI 3 标题栏原生菜单添加深色主题支持" />
 <meta property="og:description" content="WinUI 3 自动支持深色和浅色主题，但是其原生标题栏却没有自动支持，本文通过调用非公开的 Windows API 为 WinUI 3 标题栏原生菜单添加深色主题支持。" />
 <meta property="og:type" content="article" />
@@ -226,22 +230,22 @@
 
 
 </div>
-  </header> 
-<div class="toc">
-    <button class="collapsed" type="button" aria-label="切换目录折叠状态" data-bs-toggle="collapse" data-bs-target="#collapse-toc">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
-        <b>目录</b>
-    </button>
-    <div class="collapse " id="collapse-toc">
-    <div class="inner"><ul>
-            <li>
-                <a href="#%e7%9b%b8%e5%85%b3-api" aria-label="相关 API">相关 API</a></li>
-            <li>
-                <a href="#%e5%ae%9e%e7%8e%b0" aria-label="实现">实现</a>
-            </li>
-        </ul>
-    </div>
-    </div>
+  </header> <div class="toc">
+    <details>
+        <summary class="details-closed" accesskey="c" title="(Alt + C)">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            <span class="details">目录</span>
+        </summary>
+
+        <div class="inner"><ul>
+                <li>
+                    <a href="#%e7%9b%b8%e5%85%b3-api" aria-label="相关 API">相关 API</a></li>
+                <li>
+                    <a href="#%e5%ae%9e%e7%8e%b0" aria-label="实现">实现</a>
+                </li>
+            </ul>
+        </div>
+    </details>
 </div>
 
   <div class="post-content"><p>从微软开发文档「<a href="https://learn.microsoft.com/windows/apps/desktop/modernize/apply-windows-themes">在 Win32 应用中支持深色和浅色主题</a>」中可知，WinUI 3 支持深色和浅色主题，但是其标题栏是个例外，还好我们往往会通过自定义标题栏来完成深色模式的支持。然而，不幸地是我们往往不会去自定义标题栏菜单，导致菜单无法跟随系统或软件的主题设置。</p>
@@ -249,14 +253,11 @@
 <h2 id="相关-api">相关 API<a hidden class="anchor" aria-hidden="true" href="#相关-api">#</a></h2>
 <p>暗色模式 API 参考 <a href="https://github.com/ysc3839/win32-darkmode/blob/master/win32-darkmode/DarkMode.h">ysc3839/win32-darkmode</a>：</p>
 
-
-
-<div class="codeblock">
-    <button type="button" aria-label="切换代码块折叠状态" data-bs-toggle="collapse" data-bs-target="#collapse-c000e7f480">
+<details class="codeblock" open>
+    <summary>
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
         <b>C&#43;&#43;</b>
-    </button>
-    <div class="collapse show" id="collapse-c000e7f480"><div class="highlight"><div class="chroma">
+    </summary><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
@@ -286,21 +287,17 @@
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">using</span> <span class="n">fnFlushMenuThemes</span> <span class="o">=</span> <span class="kt">void</span> <span class="p">(</span><span class="n">WINAPI</span> <span class="o">*</span><span class="p">)();</span> <span class="c1">// ordinal 136
 </span></span></span></code></pre></td></tr></table>
 </div>
-</div></div>
-</div>
+</div></details>
 
 <p>对于 <code>PreferredAppMode</code> 我们关注 <code>AllowDark</code>、<code>ForceDark</code>、<code>ForceLight</code> 三个值。<code>AllowDark</code> 是跟随系统主题，而后两个是手动控制的主题。</p>
 <h2 id="实现">实现<a hidden class="anchor" aria-hidden="true" href="#实现">#</a></h2>
 <p>创建调用代码：</p>
 
-
-
-<div class="codeblock">
-    <button type="button" aria-label="切换代码块折叠状态" data-bs-toggle="collapse" data-bs-target="#collapse-c0008bc900">
+<details class="codeblock" open>
+    <summary>
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
         <b>C#</b>
-    </button>
-    <div class="collapse show" id="collapse-c0008bc900"><div class="highlight"><div class="chroma">
+    </summary><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
@@ -333,19 +330,15 @@
 </span></span></span><span class="line"><span class="cl"><span class="na">[DllImport(&#34;uxtheme.dll&#34;, EntryPoint = &#34;#136&#34;)]</span>
 </span></span><span class="line"><span class="cl"><span class="k">private</span> <span class="k">static</span> <span class="k">extern</span> <span class="n">IntPtr</span> <span class="n">FlushMenuThemes</span><span class="p">();</span></span></span></code></pre></td></tr></table>
 </div>
-</div></div>
-</div>
+</div></details>
 
 <p>创建辅助方法：</p>
 
-
-
-<div class="codeblock">
-    <button type="button" aria-label="切换代码块折叠状态" data-bs-toggle="collapse" data-bs-target="#collapse-c00114f400">
+<details class="codeblock" open>
+    <summary>
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
         <b>C#</b>
-    </button>
-    <div class="collapse show" id="collapse-c00114f400"><div class="highlight"><div class="chroma">
+    </summary><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
@@ -372,8 +365,7 @@
 </span></span><span class="line"><span class="cl">    <span class="n">FlushMenuThemes</span><span class="p">();</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></table>
 </div>
-</div></div>
-</div>
+</div></details>
 
 <p>这样我们就可以通过传入元素主题来刷新菜单主题。</p>
 <p>效果如下：</p>
