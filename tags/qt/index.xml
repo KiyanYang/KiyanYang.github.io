@@ -9,7 +9,8 @@
       <url>https://kiyanyang.github.io/papermod-cover.png</url>
       <link>https://kiyanyang.github.io/papermod-cover.png</link>
     </image>
-    <generator>Hugo -- gohugo.io</generator><atom:link href="https://kiyanyang.github.io/tags/qt/index.xml" rel="self" type="application/rss+xml" />
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language><atom:link href="https://kiyanyang.github.io/tags/qt/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>VTK9.1.0 &#43; VS2022 &#43; Qt5.12 编译</title>
       <link>https://kiyanyang.github.io/posts/fdce5f9b/</link>
