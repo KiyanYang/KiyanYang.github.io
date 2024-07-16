@@ -18,6 +18,7 @@
 <link rel="mask-icon" href="https://kiyanyang.github.io/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="zh" href="https://kiyanyang.github.io/posts/8c9c9dbd/">
 <noscript>
     <style>
         #theme-toggle,
@@ -76,6 +77,9 @@
         }
     })
 </script>
+
+  
+
 <meta property="og:title" content=".Net 反射性能测试" />
 <meta property="og:description" content="通过对 .Net6 和 .Net7 反射性能的简要测试，为性能优化提供依据。" />
 <meta property="og:type" content="article" />
@@ -158,6 +162,8 @@
         <div class="logo">
             <a href="https://kiyanyang.github.io/" accesskey="h" title="Kiyan&#39;s Blog (Alt + H)">Kiyan&#39;s Blog</a>
             <div class="logo-switches">
+                <ul class="lang-switch"><li>|</li>
+                </ul>
             </div>
         </div>
         <ul id="menu">
@@ -385,9 +391,9 @@
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="k">namespace</span> <span class="nn">DotVast.Benchmark.Reflection</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="k">internal</span> <span class="k">class</span> <span class="nc">Program</span>
+</span></span><span class="line"><span class="cl"><span class="kd">internal</span> <span class="k">class</span> <span class="nc">Program</span>
 </span></span><span class="line"><span class="cl"><span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="k">static</span> <span class="k">void</span> <span class="n">Main</span><span class="p">(</span><span class="kt">string</span><span class="p">[]</span> <span class="n">args</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">static</span> <span class="k">void</span> <span class="n">Main</span><span class="p">(</span><span class="kt">string</span><span class="p">[]</span> <span class="n">args</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">    <span class="p">{</span>
 </span></span><span class="line"><span class="cl">        <span class="n">BenchmarkRunner</span><span class="p">.</span><span class="n">Run</span><span class="p">&lt;</span><span class="n">ReadProperty</span><span class="p">&gt;();</span>
 </span></span><span class="line"><span class="cl">    <span class="p">}</span>
@@ -396,12 +402,12 @@
 </span></span></span><span class="line"><span class="cl"><span class="na">[SimpleJob(runtimeMoniker: RuntimeMoniker.Net60)]</span>
 </span></span><span class="line"><span class="cl"><span class="na">[SimpleJob(runtimeMoniker: RuntimeMoniker.Net70, baseline: true)]</span>
 </span></span><span class="line"><span class="cl"><span class="na">[MemoryDiagnoser]</span>
-</span></span><span class="line"><span class="cl"><span class="k">public</span> <span class="k">class</span> <span class="nc">ReadProperty</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="k">class</span> <span class="nc">ReadProperty</span>
 </span></span><span class="line"><span class="cl"><span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="k">private</span> <span class="k">readonly</span> <span class="n">User</span> <span class="n">_user</span> <span class="p">=</span> <span class="k">new</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="k">readonly</span> <span class="n">User</span> <span class="n">_user</span> <span class="p">=</span> <span class="k">new</span><span class="p">();</span>
 </span></span><span class="line"><span class="cl"><span class="na">
 </span></span></span><span class="line"><span class="cl"><span class="na">    [Benchmark]</span>
-</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="kt">string</span> <span class="n">ReadPub</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">string</span> <span class="n">ReadPub</span><span class="p">()</span>
 </span></span><span class="line"><span class="cl">    <span class="p">{</span>
 </span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">_user</span><span class="p">.</span><span class="n">Pub</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">    <span class="p">}</span>
@@ -410,16 +416,16 @@
 </span></span><span class="line"><span class="cl">    <span class="cs">/// Reflection</span>
 </span></span><span class="line"><span class="cl"><span class="na">
 </span></span></span><span class="line"><span class="cl"><span class="na">    [Benchmark]</span>
-</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="kt">string</span> <span class="n">ReadPriByReflection</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">string</span> <span class="n">ReadPriByReflection</span><span class="p">()</span>
 </span></span><span class="line"><span class="cl">    <span class="p">{</span>
 </span></span><span class="line"><span class="cl">        <span class="kt">var</span> <span class="n">propertyInfo</span> <span class="p">=</span> <span class="k">typeof</span><span class="p">(</span><span class="n">User</span><span class="p">).</span><span class="n">GetProperty</span><span class="p">(</span><span class="s">&#34;Pri&#34;</span><span class="p">,</span> <span class="n">BindingFlags</span><span class="p">.</span><span class="n">Instance</span> <span class="p">|</span> <span class="n">BindingFlags</span><span class="p">.</span><span class="n">NonPublic</span><span class="p">)!;</span>
 </span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="p">(</span><span class="kt">string</span><span class="p">)</span><span class="n">propertyInfo</span><span class="p">.</span><span class="n">GetValue</span><span class="p">(</span><span class="n">_user</span><span class="p">)!;</span>
 </span></span><span class="line"><span class="cl">    <span class="p">}</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="k">static</span> <span class="k">readonly</span> <span class="n">PropertyInfo</span> <span class="n">_propInfo</span> <span class="p">=</span> <span class="k">typeof</span><span class="p">(</span><span class="n">User</span><span class="p">).</span><span class="n">GetProperty</span><span class="p">(</span><span class="s">&#34;Pri&#34;</span><span class="p">,</span> <span class="n">BindingFlags</span><span class="p">.</span><span class="n">Instance</span> <span class="p">|</span> <span class="n">BindingFlags</span><span class="p">.</span><span class="n">NonPublic</span><span class="p">)!;</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">static</span> <span class="k">readonly</span> <span class="n">PropertyInfo</span> <span class="n">_propInfo</span> <span class="p">=</span> <span class="k">typeof</span><span class="p">(</span><span class="n">User</span><span class="p">).</span><span class="n">GetProperty</span><span class="p">(</span><span class="s">&#34;Pri&#34;</span><span class="p">,</span> <span class="n">BindingFlags</span><span class="p">.</span><span class="n">Instance</span> <span class="p">|</span> <span class="n">BindingFlags</span><span class="p">.</span><span class="n">NonPublic</span><span class="p">)!;</span>
 </span></span><span class="line"><span class="cl"><span class="na">
 </span></span></span><span class="line"><span class="cl"><span class="na">    [Benchmark]</span>
-</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="kt">string</span> <span class="n">ReadPriByCachedReflection</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">string</span> <span class="n">ReadPriByCachedReflection</span><span class="p">()</span>
 </span></span><span class="line"><span class="cl">    <span class="p">{</span>
 </span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="p">(</span><span class="kt">string</span><span class="p">)</span><span class="n">_propInfo</span><span class="p">.</span><span class="n">GetValue</span><span class="p">(</span><span class="n">_user</span><span class="p">)!;</span>
 </span></span><span class="line"><span class="cl">    <span class="p">}</span>
@@ -428,17 +434,17 @@
 </span></span><span class="line"><span class="cl">    <span class="cs">/// Delegate</span>
 </span></span><span class="line"><span class="cl"><span class="na">
 </span></span></span><span class="line"><span class="cl"><span class="na">    [Benchmark]</span>
-</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="kt">string</span> <span class="n">ReadPriByDelegate</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">string</span> <span class="n">ReadPriByDelegate</span><span class="p">()</span>
 </span></span><span class="line"><span class="cl">    <span class="p">{</span>
 </span></span><span class="line"><span class="cl">        <span class="kt">var</span> <span class="n">propertyInfo</span> <span class="p">=</span> <span class="k">typeof</span><span class="p">(</span><span class="n">User</span><span class="p">).</span><span class="n">GetProperty</span><span class="p">(</span><span class="s">&#34;Pri&#34;</span><span class="p">,</span> <span class="n">BindingFlags</span><span class="p">.</span><span class="n">Instance</span> <span class="p">|</span> <span class="n">BindingFlags</span><span class="p">.</span><span class="n">NonPublic</span><span class="p">)!;</span>
 </span></span><span class="line"><span class="cl">        <span class="kt">var</span> <span class="n">delFunc</span> <span class="p">=</span> <span class="p">(</span><span class="n">Func</span><span class="p">&lt;</span><span class="n">User</span><span class="p">,</span> <span class="kt">string</span><span class="p">&gt;)</span><span class="n">Delegate</span><span class="p">.</span><span class="n">CreateDelegate</span><span class="p">(</span><span class="k">typeof</span><span class="p">(</span><span class="n">Func</span><span class="p">&lt;</span><span class="n">User</span><span class="p">,</span> <span class="kt">string</span><span class="p">&gt;),</span> <span class="n">propertyInfo</span><span class="p">.</span><span class="n">GetMethod</span><span class="p">!);</span>
 </span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">delFunc</span><span class="p">(</span><span class="n">_user</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">    <span class="p">}</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="k">static</span> <span class="k">readonly</span> <span class="n">Func</span><span class="p">&lt;</span><span class="n">User</span><span class="p">,</span> <span class="kt">string</span><span class="p">&gt;</span> <span class="n">_delFunc</span> <span class="p">=</span> <span class="p">(</span><span class="n">Func</span><span class="p">&lt;</span><span class="n">User</span><span class="p">,</span> <span class="kt">string</span><span class="p">&gt;)</span><span class="n">Delegate</span><span class="p">.</span><span class="n">CreateDelegate</span><span class="p">(</span><span class="k">typeof</span><span class="p">(</span><span class="n">Func</span><span class="p">&lt;</span><span class="n">User</span><span class="p">,</span> <span class="kt">string</span><span class="p">&gt;),</span> <span class="n">_propInfo</span><span class="p">.</span><span class="n">GetMethod</span><span class="p">!);</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">static</span> <span class="k">readonly</span> <span class="n">Func</span><span class="p">&lt;</span><span class="n">User</span><span class="p">,</span> <span class="kt">string</span><span class="p">&gt;</span> <span class="n">_delFunc</span> <span class="p">=</span> <span class="p">(</span><span class="n">Func</span><span class="p">&lt;</span><span class="n">User</span><span class="p">,</span> <span class="kt">string</span><span class="p">&gt;)</span><span class="n">Delegate</span><span class="p">.</span><span class="n">CreateDelegate</span><span class="p">(</span><span class="k">typeof</span><span class="p">(</span><span class="n">Func</span><span class="p">&lt;</span><span class="n">User</span><span class="p">,</span> <span class="kt">string</span><span class="p">&gt;),</span> <span class="n">_propInfo</span><span class="p">.</span><span class="n">GetMethod</span><span class="p">!);</span>
 </span></span><span class="line"><span class="cl"><span class="na">
 </span></span></span><span class="line"><span class="cl"><span class="na">    [Benchmark]</span>
-</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="kt">string</span> <span class="n">ReadPriByCachedDelegate</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">string</span> <span class="n">ReadPriByCachedDelegate</span><span class="p">()</span>
 </span></span><span class="line"><span class="cl">    <span class="p">{</span>
 </span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">_delFunc</span><span class="p">(</span><span class="n">_user</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">    <span class="p">}</span>
@@ -447,7 +453,7 @@
 </span></span><span class="line"><span class="cl">    <span class="cs">/// Expression</span>
 </span></span><span class="line"><span class="cl"><span class="na">
 </span></span></span><span class="line"><span class="cl"><span class="na">    [Benchmark]</span>
-</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="kt">string</span> <span class="n">ReadPriByExpression</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">string</span> <span class="n">ReadPriByExpression</span><span class="p">()</span>
 </span></span><span class="line"><span class="cl">    <span class="p">{</span>
 </span></span><span class="line"><span class="cl">        <span class="kt">var</span> <span class="n">propertyInfo</span> <span class="p">=</span> <span class="k">typeof</span><span class="p">(</span><span class="n">User</span><span class="p">).</span><span class="n">GetProperty</span><span class="p">(</span><span class="s">&#34;Pri&#34;</span><span class="p">,</span> <span class="n">BindingFlags</span><span class="p">.</span><span class="n">Instance</span> <span class="p">|</span> <span class="n">BindingFlags</span><span class="p">.</span><span class="n">NonPublic</span><span class="p">)!;</span>
 </span></span><span class="line"><span class="cl">        <span class="kt">var</span> <span class="n">parameter</span> <span class="p">=</span> <span class="n">Expression</span><span class="p">.</span><span class="n">Parameter</span><span class="p">(</span><span class="k">typeof</span><span class="p">(</span><span class="n">User</span><span class="p">));</span>
@@ -456,21 +462,21 @@
 </span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">expFunc</span><span class="p">(</span><span class="n">_user</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">    <span class="p">}</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="k">static</span> <span class="k">readonly</span> <span class="n">ParameterExpression</span> <span class="n">_parameter</span> <span class="p">=</span> <span class="n">Expression</span><span class="p">.</span><span class="n">Parameter</span><span class="p">(</span><span class="k">typeof</span><span class="p">(</span><span class="n">User</span><span class="p">));</span>
-</span></span><span class="line"><span class="cl">    <span class="k">static</span> <span class="k">readonly</span> <span class="n">MemberExpression</span> <span class="n">_propExpression</span> <span class="p">=</span> <span class="n">Expression</span><span class="p">.</span><span class="n">Property</span><span class="p">(</span><span class="n">_parameter</span><span class="p">,</span> <span class="n">_propInfo</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">    <span class="k">static</span> <span class="k">readonly</span> <span class="n">Func</span><span class="p">&lt;</span><span class="n">User</span><span class="p">,</span> <span class="kt">string</span><span class="p">&gt;</span> <span class="n">_expFunc</span> <span class="p">=</span> <span class="n">Expression</span><span class="p">.</span><span class="n">Lambda</span><span class="p">&lt;</span><span class="n">Func</span><span class="p">&lt;</span><span class="n">User</span><span class="p">,</span> <span class="kt">string</span><span class="p">&gt;&gt;(</span><span class="n">_propExpression</span><span class="p">,</span> <span class="n">_parameter</span><span class="p">).</span><span class="n">Compile</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">static</span> <span class="k">readonly</span> <span class="n">ParameterExpression</span> <span class="n">_parameter</span> <span class="p">=</span> <span class="n">Expression</span><span class="p">.</span><span class="n">Parameter</span><span class="p">(</span><span class="k">typeof</span><span class="p">(</span><span class="n">User</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">static</span> <span class="k">readonly</span> <span class="n">MemberExpression</span> <span class="n">_propExpression</span> <span class="p">=</span> <span class="n">Expression</span><span class="p">.</span><span class="n">Property</span><span class="p">(</span><span class="n">_parameter</span><span class="p">,</span> <span class="n">_propInfo</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">static</span> <span class="k">readonly</span> <span class="n">Func</span><span class="p">&lt;</span><span class="n">User</span><span class="p">,</span> <span class="kt">string</span><span class="p">&gt;</span> <span class="n">_expFunc</span> <span class="p">=</span> <span class="n">Expression</span><span class="p">.</span><span class="n">Lambda</span><span class="p">&lt;</span><span class="n">Func</span><span class="p">&lt;</span><span class="n">User</span><span class="p">,</span> <span class="kt">string</span><span class="p">&gt;&gt;(</span><span class="n">_propExpression</span><span class="p">,</span> <span class="n">_parameter</span><span class="p">).</span><span class="n">Compile</span><span class="p">();</span>
 </span></span><span class="line"><span class="cl"><span class="na">
 </span></span></span><span class="line"><span class="cl"><span class="na">    [Benchmark]</span>
-</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="kt">string</span> <span class="n">ReadPriByCachedExpression</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">string</span> <span class="n">ReadPriByCachedExpression</span><span class="p">()</span>
 </span></span><span class="line"><span class="cl">    <span class="p">{</span>
 </span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">_expFunc</span><span class="p">(</span><span class="n">_user</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">    <span class="p">}</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="k">public</span> <span class="k">sealed</span> <span class="k">class</span> <span class="nc">User</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">sealed</span> <span class="k">class</span> <span class="nc">User</span>
 </span></span><span class="line"><span class="cl"><span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="k">public</span>  <span class="kt">string</span> <span class="n">Pub</span> <span class="p">=&gt;</span> <span class="s">&#34;Public&#34;</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">    <span class="k">private</span> <span class="kt">string</span> <span class="n">Pri</span> <span class="p">=&gt;</span> <span class="s">&#34;Private&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span>  <span class="kt">string</span> <span class="n">Pub</span> <span class="p">=&gt;</span> <span class="s">&#34;Public&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="kt">string</span> <span class="n">Pri</span> <span class="p">=&gt;</span> <span class="s">&#34;Private&#34;</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></table>
 </div>
 </div></details>
@@ -605,7 +611,7 @@ Intel Core i5-8250U CPU 1.60GHz (Kaby Lake R), 1 CPU, 8 logical and 4 physical c
     </main>
     
 <footer class="footer">
-    <span>&copy; 2023 <a href="https://kiyanyang.github.io/">Kiyan&#39;s Blog</a></span>
+    <span>&copy; 2024 <a href="https://kiyanyang.github.io/">Kiyan&#39;s Blog</a></span>
     <span>
         Powered by
         <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &

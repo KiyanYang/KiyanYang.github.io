@@ -12,6 +12,15 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language><atom:link href="https://kiyanyang.github.io/categories/syntax/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>C# 集合表达式</title>
+      <link>https://kiyanyang.github.io/posts/ddebf1c6/</link>
+      <pubDate>Tue, 16 Jul 2024 10:41:51 +0800</pubDate>
+      
+      <guid>https://kiyanyang.github.io/posts/ddebf1c6/</guid>
+      <description>C# 12 引入集合表达式（collection expressions），这是一种使用新的简洁语法来创建集合。本文介绍了使用方法和创建支持集合表达式的自定义集合类型。</description>
+    </item>
+    
+    <item>
       <title>Markdown 语法 拓展篇</title>
       <link>https://kiyanyang.github.io/posts/89b5ce09/</link>
       <pubDate>Tue, 10 Aug 2021 15:23:41 +0800</pubDate>

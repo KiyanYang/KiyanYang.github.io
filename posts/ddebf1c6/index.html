@@ -1,0 +1,905 @@
+<!DOCTYPE html>
+<html lang="zh" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>C# 集合表达式 | Kiyan&#39;s Blog</title>
+<meta name="keywords" content="dotnet, C#, 教程">
+<meta name="description" content="C# 12 引入集合表达式（collection expressions），这是一种使用新的简洁语法来创建集合。本文介绍了使用方法和创建支持集合表达式的自定义集合类型。">
+<meta name="author" content="Kiyan">
+<link rel="canonical" href="https://kiyanyang.github.io/posts/ddebf1c6/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.cab22e7bf36da7c15c63cdb748e2b5c4e9d64fc8c0d84ef2eb6d3ad0a557c01c.css" integrity="sha256-yrIue/Ntp8FcY823SOK1xOnWT8jA2E7y62060KVXwBw=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://kiyanyang.github.io/img/favicon.webp">
+<link rel="icon" type="image/png" sizes="16x16" href="https://kiyanyang.github.io/img/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://kiyanyang.github.io/img/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://kiyanyang.github.io/img/apple-touch-icon.png">
+<link rel="mask-icon" href="https://kiyanyang.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="zh" href="https://kiyanyang.github.io/posts/ddebf1c6/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --hljs-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript>
+
+<link crossorigin="anonymous" href="/assets/scss/bundle.72020897a8abd268b64f5fbc63fccc8189a1623313d12ad386fb97a3fa60d70c.css" integrity="sha256-cgIIl6ir0mi2T1&#43;8Y/zMgYmhYjMT0SrThvuXo/pg1ww=" rel="preload stylesheet" as="style">
+
+
+
+<script defer src="/assets/js/bundle.382184558bf3d1934e2bbfa24f19856c57b7fc366c5c7ac0ce7f321df8143949.js" crossorigin="anonymous"></script>
+
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&amp;family=Noto&#43;Sans&#43;SC:wght@400;500;700&amp;display=swap" as="style" onload="this.onload=null;this.rel='stylesheet';" crossorigin>
+<script>
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', ({ matches }) => {
+        if (matches) {
+            document.body.classList.add('dark');
+        } else {
+            document.body.classList.remove('dark');
+        }
+    })
+</script>
+
+  
+
+<meta property="og:title" content="C# 集合表达式" />
+<meta property="og:description" content="C# 12 引入集合表达式（collection expressions），这是一种使用新的简洁语法来创建集合。本文介绍了使用方法和创建支持集合表达式的自定义集合类型。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://kiyanyang.github.io/posts/ddebf1c6/" /><meta property="og:image" content="https://kiyanyang.github.io/papermod-cover.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2024-07-16T10:41:51+08:00" />
+<meta property="article:modified_time" content="2024-07-16T12:24:02+08:00" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://kiyanyang.github.io/papermod-cover.png"/>
+
+<meta name="twitter:title" content="C# 集合表达式"/>
+<meta name="twitter:description" content="C# 12 引入集合表达式（collection expressions），这是一种使用新的简洁语法来创建集合。本文介绍了使用方法和创建支持集合表达式的自定义集合类型。"/>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "文章",
+      "item": "https://kiyanyang.github.io/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "C# 集合表达式",
+      "item": "https://kiyanyang.github.io/posts/ddebf1c6/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "C# 集合表达式",
+  "name": "C# 集合表达式",
+  "description": "C# 12 引入集合表达式（collection expressions），这是一种使用新的简洁语法来创建集合。本文介绍了使用方法和创建支持集合表达式的自定义集合类型。",
+  "keywords": [
+    "dotnet", "C#", "教程"
+  ],
+  "articleBody": "C# 12 引入集合表达式（collection expressions），这是一种使用新的简洁语法来创建集合。本文介绍了使用方法和创建支持集合表达式的自定义集合类型。\n用法 通过元素创建集合 使用形如 = [, , ] 的方式创建集合，例如\nC# 1 2 3 4 Span\u003cint\u003e span = [1, 3, 5, 7, 9]; ReadOnlySpan\u003cstring\u003e days = [\"Mon\", \"Tue\", \"Wed\", \"Thu\", \"Fri\", \"Sat\", \"Sun\"]; double[] array = [1.1, 2.2]; List\u003cdouble\u003e list = [3.3, 4.4]; 也可以是空集合，例如\nC# 1 2 3 4 Span\u003cint\u003e span = []; ReadOnlySpan\u003cstring\u003e days = []; double[] array = []; List\u003cdouble\u003e list = []; 也可以是接口，例如\nC# 1 2 IEnumerable\u003cint\u003e ienumerable = [1, 3, 5, 7, 9]; IList\u003cint\u003e ilist = [0, 2, 4, 6, 8]; 也可以方法调用，例如\nC# 1 2 3 4 5 6 using System.Collections.Generic; using System.Linq; public int Sum(IEnumerable\u003cint\u003e data) =\u003e data.Sum(); Sum([1, 2, 3, 4, 5]); 展开元素 使用展开操作 .. 将其他集合的值内联到集合中，形如 [e1, ..c2, e2, ..c2]，例如\nC# 1 2 3 4 5 6 7 8 9 10 11 string[] weekdays = [\"Mon\", \"Tue\", \"Wed\", \"Thu\", \"Fri\"]; string[] weekend = [\"Sat\", \"Sun\"]; // [\"Mon\", \"Tue\", \"Wed\", \"Thu\", \"Fri\", \"Sat\", \"Sun\"] string[] daysOfWeek = [..weekdays, ..weekend]; char[] hello = ['h', 'e', 'l', 'l', 'o']; char[] world = ['w', 'o', 'r', 'l', 'd']; // ['h', 'e', 'l', 'l', 'o', ',', ' ', 'w', 'o', 'r', 'l', 'd', '!'] char[] helloWorld = [..hello, ',', ' ', ..world, '!']; 创建 主要有两种方式来创建可以使用集合表达式的集合\n该集合可以使用集合初始化器（collection initializers） 该集合具有适当的 Create Method。【推荐】 集合初始化器方式 集合初始化器需要满足如下条件\n具有无参构造函数 实现 IEnumerable 具有适当的 Add 实例方法或扩展方法。 例如\nC# 1 2 3 4 5 6 7 8 public class MyCollection: IEnumerable { private List\u003cint\u003e _list = new(); public IEnumerator GetEnumerator() =\u003e _list.GetEnumerator(); public void Add(int num) =\u003e _list.Add(num); } 我们可以使用集合初始化器\nC# 1 MyCollection mc = new() {1, 3, 5}; 我们也可以使用集合表达式\nC# 1 MyCollection mc = [1, 3, 5]; 也可以是泛型的，例如\nC# 1 2 3 4 5 6 7 8 9 10 11 MyCollection\u003cint\u003e mc1 = [1, 3, 5]; MyCollection\u003cchar\u003e mc2 = ['a', 'b']; public class MyCollection\u003cT\u003e: IEnumerable { private List\u003cT\u003e _list = new(); public IEnumerator GetEnumerator() =\u003e _list.GetEnumerator(); public void Add(T element) =\u003e _list.Add(element); } 但是注意并非所有集合初始化器都支持集合表达式，它们的区别主要是，对于集合表达式而言必须有一个仅一个参数即可调用的 Add 方法，而集合初始化器可以有多个参数。例如 Dictionary 的 Add(TKey, TValue) 方法必须要有两个参数，因此 Dictionary 不支持集合表达式仅支持集合初始化器。\nCreate Method 方式 需要满足如下条件\n集合类型需要有 [CollectionBuilder(Type builderType, string methodName)] 属性，其中 builderType 必须是非泛型 class 或 struct，methodName 指向 Create Method Create Method 必须是 static Create Method 必须仅有一个 ReadOnlySpan 类型的参数 集合类型需要有 GetEnumerator() 实例方法 例如\nC# 1 2 3 4 5 6 7 8 9 10 11 12 [CollectionBuilder(typeof(MyCollection), nameof(Create))] public class MyCollection { private int[] _list; public MyCollection(ReadOnlySpan\u003cint\u003e data) =\u003e _list = data.ToArray(); // Create Method public static MyCollection Create(ReadOnlySpan\u003cint\u003e data) =\u003e new(data); public IEnumerator\u003cint\u003e GetEnumerator() =\u003e _list.AsEnumerable().GetEnumerator(); } 可以使用集合表达式\nC# 1 MyCollection mc = [1, 3, 5]; 这里有些需要注意的是\n集合类型需要有 GetEnumerator() 方法，但不必实现 IEnumerable 或 IEnumerable 接口，也就是说这是一个鸭子类型 Create Method 的参数类型 ReadOnlySpan 中的类型 T 必须和集合类型的元素类型保持一致，而集合类型的元素类型是根据 GetEnumerator() 的返回值类型确定的，若返回 IEnumerator 则元素类型为 object，若返回 IEnumerator 则元素类型为 T 也可以是泛型的，例如\nC# 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 MyCollection\u003cint\u003e mc1 = [1, 3, 5]; MyCollection\u003cchar\u003e mc2 = ['a', 'b']; public class MyCollection { // Create Method public static MyCollection\u003cT\u003e Create\u003cT\u003e(ReadOnlySpan\u003cT\u003e data) =\u003e new(data); } [CollectionBuilder(typeof(MyCollection), nameof(MyCollection.Create))] public class MyCollection\u003cT\u003e { private T[] _list; public MyCollection(ReadOnlySpan\u003cT\u003e data) =\u003e _list = data.ToArray(); public IEnumerator\u003cT\u003e GetEnumerator() =\u003e _list.AsEnumerable().GetEnumerator(); } 上述示例均为最小实现，一般情况下集合类型需要继承 IEnumerable 以使用 Linq，完整示例如下\nC# 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 MyCollection\u003cint\u003e mc1 = [1, 3, 5]; MyCollection\u003cchar\u003e mc2 = ['a', 'b']; public class MyCollection { public static MyCollection\u003cT\u003e Create\u003cT\u003e(ReadOnlySpan\u003cT\u003e data) =\u003e new(data); } [CollectionBuilder(typeof(MyCollection), nameof(MyCollection.Create))] public class MyCollection\u003cT\u003e: IEnumerable\u003cT\u003e { private T[] _list; public MyCollection(ReadOnlySpan\u003cT\u003e data) =\u003e _list = data.ToArray(); IEnumerator IEnumerable.GetEnumerator() =\u003e _list.GetEnumerator(); public IEnumerator\u003cT\u003e GetEnumerator() =\u003e _list.AsEnumerable().GetEnumerator(); } 接口实现 接口实现一般采用 Create Method 方式，在上述基础上，添加一个接口的Create Method 方式即可，例如\nC# 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 IMyCollection\u003cint\u003e mc1 = [1, 3, 5]; IMyCollection\u003cchar\u003e mc2 = ['a', 'b']; public class MyCollection { public static MyCollection\u003cT\u003e Create\u003cT\u003e(ReadOnlySpan\u003cT\u003e data) =\u003e new(data); } [CollectionBuilder(typeof(MyCollection), nameof(MyCollection.Create))] public class MyCollection\u003cT\u003e: IMyCollection\u003cT\u003e { private T[] _list; public MyCollection(ReadOnlySpan\u003cT\u003e data) =\u003e _list = data.ToArray(); public IEnumerator\u003cT\u003e GetEnumerator() =\u003e _list.AsEnumerable().GetEnumerator(); } [CollectionBuilder(typeof(MyCollection), nameof(MyCollection.Create))] public interface IMyCollection\u003cT\u003e { // 一般情况下，继承 IEnumerable 即可 // 但是若未继承 IEnumerable ，则必须要有该方法，以确定集合接口的元素类型 IEnumerator\u003cT\u003e GetEnumerator(); } ",
+  "wordCount" : "1355",
+  "inLanguage": "zh",
+  "datePublished": "2024-07-16T10:41:51+08:00",
+  "dateModified": "2024-07-16T12:24:02+08:00",
+  "author":{
+    "@type": "Person",
+    "name": "Kiyan"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://kiyanyang.github.io/posts/ddebf1c6/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Kiyan's Blog",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://kiyanyang.github.io/img/favicon.webp"
+    }
+  }
+}
+</script>
+</head>
+
+<body class="" id="top">
+<script>
+    if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://kiyanyang.github.io/" accesskey="h" title="Kiyan&#39;s Blog (Alt + H)">Kiyan&#39;s Blog</a>
+            <div class="logo-switches">
+                <ul class="lang-switch"><li>|</li>
+                </ul>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://kiyanyang.github.io/archives/" title="归档">
+                    <span><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" height="1em" viewBox="0 0 512 512"><path d="M32 32H480c17.7 0 32 14.3 32 32V96c0 17.7-14.3 32-32 32H32C14.3 128 0 113.7 0 96V64C0 46.3 14.3 32 32 32zm0 128H480V416c0 35.3-28.7 64-64 64H96c-35.3 0-64-28.7-64-64V160zm128 80c0 8.8 7.2 16 16 16H336c8.8 0 16-7.2 16-16s-7.2-16-16-16H176c-8.8 0-16 7.2-16 16z"/></svg>归档</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://kiyanyang.github.io/tags/" title="标签">
+                    <span><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" height="1em" viewBox="0 0 512 512"><path d="M345 39.1L472.8 168.4c52.4 53 52.4 138.2 0 191.2L360.8 472.9c-9.3 9.4-24.5 9.5-33.9 .2s-9.5-24.5-.2-33.9L438.6 325.9c33.9-34.3 33.9-89.4 0-123.7L310.9 72.9c-9.3-9.4-9.2-24.6 .2-33.9s24.6-9.2 33.9 .2zM0 229.5V80C0 53.5 21.5 32 48 32H197.5c17 0 33.3 6.7 45.3 18.7l168 168c25 25 25 65.5 0 90.5L277.3 442.7c-25 25-65.5 25-90.5 0l-168-168C6.7 262.7 0 246.5 0 229.5zM144 144a32 32 0 1 0 -64 0 32 32 0 1 0 64 0z"/></svg>标签</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://kiyanyang.github.io/categories/" title="分类">
+                    <span><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" height="1em" viewBox="0 0 576 512"><path d="M264.5 5.2c14.9-6.9 32.1-6.9 47 0l218.6 101c8.5 3.9 13.9 12.4 13.9 21.8s-5.4 17.9-13.9 21.8l-218.6 101c-14.9 6.9-32.1 6.9-47 0L45.9 149.8C37.4 145.8 32 137.3 32 128s5.4-17.9 13.9-21.8L264.5 5.2zM476.9 209.6l53.2 24.6c8.5 3.9 13.9 12.4 13.9 21.8s-5.4 17.9-13.9 21.8l-218.6 101c-14.9 6.9-32.1 6.9-47 0L45.9 277.8C37.4 273.8 32 265.3 32 256s5.4-17.9 13.9-21.8l53.2-24.6 152 70.2c23.4 10.8 50.4 10.8 73.8 0l152-70.2zm-152 198.2l152-70.2 53.2 24.6c8.5 3.9 13.9 12.4 13.9 21.8s-5.4 17.9-13.9 21.8l-218.6 101c-14.9 6.9-32.1 6.9-47 0L45.9 405.8C37.4 401.8 32 393.3 32 384s5.4-17.9 13.9-21.8l53.2-24.6 152 70.2c23.4 10.8 50.4 10.8 73.8 0z"/></svg>分类</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://kiyanyang.github.io/about/" title="关于">
+                    <span><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" height="1em" viewBox="0 0 448 512"><path d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z"/></svg>关于</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://kiyanyang.github.io/extras/" title="更多">
+                    <span><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" height="1em" viewBox="0 0 448 512"><path d="M50.7 58.5L0 160H208V32H93.7C75.5 32 58.9 42.3 50.7 58.5zM240 160H448L397.3 58.5C389.1 42.3 372.5 32 354.3 32H240V160zm208 32H0V416c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V192z"/></svg>更多</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://kiyanyang.github.io/search/" title="搜索 (Alt &#43; /)" accesskey=/>
+                    <span><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" height="1em" viewBox="0 0 512 512"><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"/></svg>搜索</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title">
+      C# 集合表达式
+    </h1>
+    <div class="post-meta">
+
+<ul class="page-meta">
+    <li><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" height="1em" viewBox="0 0 448 512"><path d="M96 32V64H48C21.5 64 0 85.5 0 112v48H448V112c0-26.5-21.5-48-48-48H352V32c0-17.7-14.3-32-32-32s-32 14.3-32 32V64H160V32c0-17.7-14.3-32-32-32S96 14.3 96 32zM448 192H0V464c0 26.5 21.5 48 48 48H400c26.5 0 48-21.5 48-48V192z"/></svg><span title='2024-07-16 10:41:51 +0800 +0800'>2024-07-16 10:41</span></li>
+    <li><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" height="1em" viewBox="0 0 448 512"><path d="M128 0c17.7 0 32 14.3 32 32V64H288V32c0-17.7 14.3-32 32-32s32 14.3 32 32V64h48c26.5 0 48 21.5 48 48v48H0V112C0 85.5 21.5 64 48 64H96V32c0-17.7 14.3-32 32-32zM0 192H448V464c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V192zM329 305c9.4-9.4 9.4-24.6 0-33.9s-24.6-9.4-33.9 0l-95 95-47-47c-9.4-9.4-24.6-9.4-33.9 0s-9.4 24.6 0 33.9l64 64c9.4 9.4 24.6 9.4 33.9 0L329 305z"/></svg><span title='2024-07-16 12:24:02 +0800 +0800'>2024-07-16 12:24</span></li>
+    <li><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" height="1em" viewBox="0 0 512 512"><path d="M256 0a256 256 0 1 1 0 512A256 256 0 1 1 256 0zM232 120V256c0 8 4 15.5 10.7 20l96 64c11 7.4 25.9 4.4 33.3-6.7s4.4-25.9-6.7-33.3L280 243.2V120c0-13.3-10.7-24-24-24s-24 10.7-24 24z"/></svg>3 分钟</li>
+    <li><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" height="1em" viewBox="0 0 512 512"><path d="M362.7 19.3L314.3 67.7 444.3 197.7l48.4-48.4c25-25 25-65.5 0-90.5L453.3 19.3c-25-25-65.5-25-90.5 0zm-71 71L58.6 323.5c-10.4 10.4-18 23.3-22.2 37.4L1 481.2C-1.5 489.7 .8 498.8 7 505s15.3 8.5 23.7 6.1l120.3-35.4c14.1-4.2 27-11.8 37.4-22.2L421.7 220.3 291.7 90.3z"/></svg>1355 字</li>
+    <li><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" height="1em" viewBox="0 0 640 512"><path d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H322.8c-3.1-8.8-3.7-18.4-1.4-27.8l15-60.1c2.8-11.3 8.6-21.5 16.8-29.7l40.3-40.3c-32.1-31-75.7-50.1-123.9-50.1H178.3zm435.5-68.3c-15.6-15.6-40.9-15.6-56.6 0l-29.4 29.4 71 71 29.4-29.4c15.6-15.6 15.6-40.9 0-56.6l-14.4-14.4zM375.9 417c-4.1 4.1-7 9.2-8.4 14.9l-15 60.1c-1.4 5.5 .2 11.2 4.2 15.2s9.7 5.6 15.2 4.2l60.1-15c5.6-1.4 10.8-4.3 14.9-8.4L576.1 358.7l-71-71L375.9 417z"/></svg>Kiyan</li>
+</ul>
+
+
+</div>
+  </header> <div class="toc">
+    <details>
+        <summary class="details-closed" accesskey="c" title="(Alt + C)">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            <span class="details">目录</span>
+        </summary>
+
+        <div class="inner"><ul>
+                <li>
+                    <a href="#%e7%94%a8%e6%b3%95" aria-label="用法">用法</a><ul>
+                        
+                <li>
+                    <a href="#%e9%80%9a%e8%bf%87%e5%85%83%e7%b4%a0%e5%88%9b%e5%bb%ba%e9%9b%86%e5%90%88" aria-label="通过元素创建集合">通过元素创建集合</a></li>
+                <li>
+                    <a href="#%e5%b1%95%e5%bc%80%e5%85%83%e7%b4%a0" aria-label="展开元素">展开元素</a></li></ul>
+                </li>
+                <li>
+                    <a href="#%e5%88%9b%e5%bb%ba" aria-label="创建">创建</a><ul>
+                        
+                <li>
+                    <a href="#%e9%9b%86%e5%90%88%e5%88%9d%e5%a7%8b%e5%8c%96%e5%99%a8%e6%96%b9%e5%bc%8f" aria-label="集合初始化器方式">集合初始化器方式</a></li>
+                <li>
+                    <a href="#create-method-%e6%96%b9%e5%bc%8f" aria-label="Create Method 方式"><code>Create Method</code> 方式</a></li>
+                <li>
+                    <a href="#%e6%8e%a5%e5%8f%a3%e5%ae%9e%e7%8e%b0" aria-label="接口实现">接口实现</a>
+                </li>
+            </ul>
+            </li>
+            </ul>
+        </div>
+    </details>
+</div>
+
+  <div class="post-content"><p>C# 12 引入集合表达式（collection expressions），这是一种使用新的简洁语法来创建集合。本文介绍了使用方法和创建支持集合表达式的自定义集合类型。</p>
+<h2 id="用法">用法<a hidden class="anchor" aria-hidden="true" href="#用法">#</a></h2>
+<h3 id="通过元素创建集合">通过元素创建集合<a hidden class="anchor" aria-hidden="true" href="#通过元素创建集合">#</a></h3>
+<p>使用形如 <code>&lt;type&gt; &lt;name&gt; = [&lt;e1&gt;, &lt;e2&gt;, &lt;e3&gt;]</code> 的方式创建集合，例如</p>
+
+<details class="codeblock" open>
+    <summary>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        <b>C#</b>
+    </summary><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cs" data-lang="cs"><span class="line"><span class="cl"><span class="n">Span</span><span class="p">&lt;</span><span class="kt">int</span><span class="p">&gt;</span> <span class="n">span</span> <span class="p">=</span> <span class="p">[</span><span class="m">1</span><span class="p">,</span> <span class="m">3</span><span class="p">,</span> <span class="m">5</span><span class="p">,</span> <span class="m">7</span><span class="p">,</span> <span class="m">9</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl"><span class="n">ReadOnlySpan</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span> <span class="n">days</span> <span class="p">=</span> <span class="p">[</span><span class="s">&#34;Mon&#34;</span><span class="p">,</span> <span class="s">&#34;Tue&#34;</span><span class="p">,</span> <span class="s">&#34;Wed&#34;</span><span class="p">,</span> <span class="s">&#34;Thu&#34;</span><span class="p">,</span> <span class="s">&#34;Fri&#34;</span><span class="p">,</span> <span class="s">&#34;Sat&#34;</span><span class="p">,</span> <span class="s">&#34;Sun&#34;</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl"><span class="kt">double</span><span class="p">[]</span> <span class="n">array</span> <span class="p">=</span> <span class="p">[</span><span class="m">1.1</span><span class="p">,</span> <span class="m">2.2</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl"><span class="n">List</span><span class="p">&lt;</span><span class="kt">double</span><span class="p">&gt;</span> <span class="n">list</span> <span class="p">=</span> <span class="p">[</span><span class="m">3.3</span><span class="p">,</span> <span class="m">4.4</span><span class="p">];</span></span></span></code></pre></td></tr></table>
+</div>
+</div></details>
+
+<p>也可以是空集合，例如</p>
+
+<details class="codeblock" open>
+    <summary>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        <b>C#</b>
+    </summary><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cs" data-lang="cs"><span class="line"><span class="cl"><span class="n">Span</span><span class="p">&lt;</span><span class="kt">int</span><span class="p">&gt;</span> <span class="n">span</span> <span class="p">=</span> <span class="p">[];</span>
+</span></span><span class="line"><span class="cl"><span class="n">ReadOnlySpan</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span> <span class="n">days</span> <span class="p">=</span> <span class="p">[];</span>
+</span></span><span class="line"><span class="cl"><span class="kt">double</span><span class="p">[]</span> <span class="n">array</span> <span class="p">=</span> <span class="p">[];</span>
+</span></span><span class="line"><span class="cl"><span class="n">List</span><span class="p">&lt;</span><span class="kt">double</span><span class="p">&gt;</span> <span class="n">list</span> <span class="p">=</span> <span class="p">[];</span></span></span></code></pre></td></tr></table>
+</div>
+</div></details>
+
+<p>也可以是接口，例如</p>
+
+<details class="codeblock" open>
+    <summary>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        <b>C#</b>
+    </summary><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cs" data-lang="cs"><span class="line"><span class="cl"><span class="n">IEnumerable</span><span class="p">&lt;</span><span class="kt">int</span><span class="p">&gt;</span> <span class="n">ienumerable</span> <span class="p">=</span> <span class="p">[</span><span class="m">1</span><span class="p">,</span> <span class="m">3</span><span class="p">,</span> <span class="m">5</span><span class="p">,</span> <span class="m">7</span><span class="p">,</span> <span class="m">9</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl"><span class="n">IList</span><span class="p">&lt;</span><span class="kt">int</span><span class="p">&gt;</span> <span class="n">ilist</span> <span class="p">=</span> <span class="p">[</span><span class="m">0</span><span class="p">,</span> <span class="m">2</span><span class="p">,</span> <span class="m">4</span><span class="p">,</span> <span class="m">6</span><span class="p">,</span> <span class="m">8</span><span class="p">];</span></span></span></code></pre></td></tr></table>
+</div>
+</div></details>
+
+<p>也可以方法调用，例如</p>
+
+<details class="codeblock" open>
+    <summary>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        <b>C#</b>
+    </summary><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cs" data-lang="cs"><span class="line"><span class="cl"><span class="k">using</span> <span class="nn">System.Collections.Generic</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">using</span> <span class="nn">System.Linq</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kt">int</span> <span class="n">Sum</span><span class="p">(</span><span class="n">IEnumerable</span><span class="p">&lt;</span><span class="kt">int</span><span class="p">&gt;</span> <span class="n">data</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="n">data</span><span class="p">.</span><span class="n">Sum</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">Sum</span><span class="p">([</span><span class="m">1</span><span class="p">,</span> <span class="m">2</span><span class="p">,</span> <span class="m">3</span><span class="p">,</span> <span class="m">4</span><span class="p">,</span> <span class="m">5</span><span class="p">]);</span></span></span></code></pre></td></tr></table>
+</div>
+</div></details>
+
+<h3 id="展开元素">展开元素<a hidden class="anchor" aria-hidden="true" href="#展开元素">#</a></h3>
+<p>使用展开操作 <code>..</code> 将其他集合的值内联到集合中，形如 <code>[e1, ..c2, e2, ..c2]</code>，例如</p>
+
+<details class="codeblock" open>
+    <summary>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        <b>C#</b>
+    </summary><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cs" data-lang="cs"><span class="line"><span class="cl"><span class="kt">string</span><span class="p">[]</span> <span class="n">weekdays</span> <span class="p">=</span> <span class="p">[</span><span class="s">&#34;Mon&#34;</span><span class="p">,</span> <span class="s">&#34;Tue&#34;</span><span class="p">,</span> <span class="s">&#34;Wed&#34;</span><span class="p">,</span> <span class="s">&#34;Thu&#34;</span><span class="p">,</span> <span class="s">&#34;Fri&#34;</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl"><span class="kt">string</span><span class="p">[]</span> <span class="n">weekend</span> <span class="p">=</span> <span class="p">[</span><span class="s">&#34;Sat&#34;</span><span class="p">,</span> <span class="s">&#34;Sun&#34;</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// [&#34;Mon&#34;, &#34;Tue&#34;, &#34;Wed&#34;, &#34;Thu&#34;, &#34;Fri&#34;, &#34;Sat&#34;, &#34;Sun&#34;]</span>
+</span></span><span class="line"><span class="cl"><span class="kt">string</span><span class="p">[]</span> <span class="n">daysOfWeek</span> <span class="p">=</span> <span class="p">[..</span><span class="n">weekdays</span><span class="p">,</span> <span class="p">..</span><span class="n">weekend</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">char</span><span class="p">[]</span> <span class="n">hello</span> <span class="p">=</span> <span class="p">[</span><span class="sc">&#39;h&#39;</span><span class="p">,</span> <span class="sc">&#39;e&#39;</span><span class="p">,</span> <span class="sc">&#39;l&#39;</span><span class="p">,</span> <span class="sc">&#39;l&#39;</span><span class="p">,</span> <span class="sc">&#39;o&#39;</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl"><span class="kt">char</span><span class="p">[]</span> <span class="n">world</span> <span class="p">=</span> <span class="p">[</span><span class="sc">&#39;w&#39;</span><span class="p">,</span> <span class="sc">&#39;o&#39;</span><span class="p">,</span> <span class="sc">&#39;r&#39;</span><span class="p">,</span> <span class="sc">&#39;l&#39;</span><span class="p">,</span> <span class="sc">&#39;d&#39;</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// [&#39;h&#39;, &#39;e&#39;, &#39;l&#39;, &#39;l&#39;, &#39;o&#39;, &#39;,&#39;, &#39; &#39;, &#39;w&#39;, &#39;o&#39;, &#39;r&#39;, &#39;l&#39;, &#39;d&#39;, &#39;!&#39;]</span>
+</span></span><span class="line"><span class="cl"><span class="kt">char</span><span class="p">[]</span> <span class="n">helloWorld</span> <span class="p">=</span> <span class="p">[..</span><span class="n">hello</span><span class="p">,</span> <span class="sc">&#39;,&#39;</span><span class="p">,</span> <span class="sc">&#39; &#39;</span><span class="p">,</span> <span class="p">..</span><span class="n">world</span><span class="p">,</span> <span class="sc">&#39;!&#39;</span><span class="p">];</span></span></span></code></pre></td></tr></table>
+</div>
+</div></details>
+
+<h2 id="创建">创建<a hidden class="anchor" aria-hidden="true" href="#创建">#</a></h2>
+<p>主要有两种方式来创建可以使用集合表达式的集合</p>
+<ul>
+<li>该集合可以使用集合初始化器（collection initializers）</li>
+<li>该集合具有适当的 <code>Create Method</code>。【推荐】</li>
+</ul>
+<h3 id="集合初始化器方式">集合初始化器方式<a hidden class="anchor" aria-hidden="true" href="#集合初始化器方式">#</a></h3>
+<p>集合初始化器需要满足如下条件</p>
+<ul>
+<li>具有无参构造函数</li>
+<li>实现 <code>IEnumerable</code></li>
+<li>具有适当的 <code>Add</code> 实例方法或扩展方法。</li>
+</ul>
+<p><a href="https://sharplab.io/#v2:D4AQDABCCMB0DCB7ANsgpgYwC4EtEDsBnAbgFgAocKaAFjPIoFkBPJVTXAiAWw2ggC8EfGgDuACgCUEAN7QANBADMigKwBfYhAD02iG3TY8+CDnw5cAQ2Q4AXmgBOhJqxSHOJ3gCZBEANoKymoAulq6+m4cxhBoAB4ADg5ohITGzgyUSlA+LAZRBABc1EoUMhQQFRCJOABullhoEAAyOIRYADxmWAB8EAD6Nm2+IhKS9JUQ5ZUgWQCSAKL4AK7cjvWIDhAA4mhYiytrWBtSgr0DrViwO3vLqw7rDlLjlVMVM1A0EACCACY/4l1hCtpAIzoNLr9/rcxhR1EA=">例如</a></p>
+
+<details class="codeblock" open>
+    <summary>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        <b>C#</b>
+    </summary><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cs" data-lang="cs"><span class="line"><span class="cl"><span class="kd">public</span> <span class="k">class</span> <span class="nc">MyCollection</span><span class="p">:</span> <span class="n">IEnumerable</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">List</span><span class="p">&lt;</span><span class="kt">int</span><span class="p">&gt;</span> <span class="n">_list</span> <span class="p">=</span> <span class="k">new</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">IEnumerator</span> <span class="n">GetEnumerator</span><span class="p">()</span> <span class="p">=&gt;</span> <span class="n">_list</span><span class="p">.</span><span class="n">GetEnumerator</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="k">void</span> <span class="n">Add</span><span class="p">(</span><span class="kt">int</span> <span class="n">num</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="n">_list</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="n">num</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></table>
+</div>
+</div></details>
+
+<p>我们可以使用集合初始化器</p>
+
+<details class="codeblock" open>
+    <summary>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        <b>C#</b>
+    </summary><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cs" data-lang="cs"><span class="line"><span class="cl"><span class="n">MyCollection</span> <span class="n">mc</span> <span class="p">=</span> <span class="k">new</span><span class="p">()</span> <span class="p">{</span><span class="m">1</span><span class="p">,</span> <span class="m">3</span><span class="p">,</span> <span class="m">5</span><span class="p">};</span></span></span></code></pre></td></tr></table>
+</div>
+</div></details>
+
+<p>我们也可以使用集合表达式</p>
+
+<details class="codeblock" open>
+    <summary>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        <b>C#</b>
+    </summary><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cs" data-lang="cs"><span class="line"><span class="cl"><span class="n">MyCollection</span> <span class="n">mc</span> <span class="p">=</span> <span class="p">[</span><span class="m">1</span><span class="p">,</span> <span class="m">3</span><span class="p">,</span> <span class="m">5</span><span class="p">];</span></span></span></code></pre></td></tr></table>
+</div>
+</div></details>
+
+<p>也可以是泛型的，<a href="https://sharplab.io/#v2:D4AQDABCCMB0DCB7ANsgpgYwC4EtEDsBnAbgFgAocKaAFjPIoFkBPJVTXAgHh3ywD4IAWwzQIAXggBtaABoIAZnkBWALr0WbdNjz4uGABYBDAE6CRAJgnSA5EZvybAIxvqKFEAqhXNKbZz0AFX4ALmoFCgBvCghYiAAHExwANyMsNAgAGRxCLC5giAB9ZBysa3w0AHcACgBKejiIGLjPCABJAFF8AFchNBM0xBMIAHE0LC7e/sGTOolBYtLYMYmevoGsIbqGuObY1pAaCABBABNT6sCINHQ+vlr5opLc2DOLm7Q7rHqKAF8gA===">例如</a></p>
+
+<details class="codeblock" open>
+    <summary>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        <b>C#</b>
+    </summary><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cs" data-lang="cs"><span class="line"><span class="cl"><span class="n">MyCollection</span><span class="p">&lt;</span><span class="kt">int</span><span class="p">&gt;</span> <span class="n">mc1</span> <span class="p">=</span> <span class="p">[</span><span class="m">1</span><span class="p">,</span> <span class="m">3</span><span class="p">,</span> <span class="m">5</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl"><span class="n">MyCollection</span><span class="p">&lt;</span><span class="kt">char</span><span class="p">&gt;</span> <span class="n">mc2</span> <span class="p">=</span> <span class="p">[</span><span class="sc">&#39;a&#39;</span><span class="p">,</span> <span class="sc">&#39;b&#39;</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="k">class</span> <span class="nc">MyCollection</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;:</span> <span class="n">IEnumerable</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;</span> <span class="n">_list</span> <span class="p">=</span> <span class="k">new</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">IEnumerator</span> <span class="n">GetEnumerator</span><span class="p">()</span> <span class="p">=&gt;</span> <span class="n">_list</span><span class="p">.</span><span class="n">GetEnumerator</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="k">void</span> <span class="n">Add</span><span class="p">(</span><span class="n">T</span> <span class="n">element</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="n">_list</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="n">element</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></table>
+</div>
+</div></details>
+
+<p>但是注意并非所有集合初始化器都支持集合表达式，它们的区别主要是，对于集合表达式而言必须有一个仅一个参数即可调用的 <code>Add</code> 方法，而集合初始化器可以有多个参数。例如 <code>Dictionary&lt;TKey,TValue&gt;</code> 的 <code>Add(TKey, TValue)</code> 方法必须要有两个参数，因此 <code>Dictionary&lt;TKey,TValue&gt;</code> 不支持集合表达式仅支持集合初始化器。</p>
+<h3 id="create-method-方式"><code>Create Method</code> 方式<a hidden class="anchor" aria-hidden="true" href="#create-method-方式">#</a></h3>
+<p>需要满足如下条件</p>
+<ul>
+<li>集合类型需要有 <code>[CollectionBuilder(Type builderType, string methodName)]</code> 属性，其中 <code>builderType</code> 必须是非泛型 <code>class</code> 或 <code>struct</code>，<code>methodName</code> 指向 <code>Create Method</code>
+<ul>
+<li><code>Create Method</code> 必须是 <code>static</code></li>
+<li><code>Create Method</code> 必须仅有一个 <code>ReadOnlySpan&lt;T&gt;</code> 类型的参数</li>
+</ul>
+</li>
+<li>集合类型需要有 <code>GetEnumerator()</code> 实例方法</li>
+</ul>
+<p><a href="https://sharplab.io/#v2:D4AQTAjAsAUCAMACEEAsBuWDkQHQBkBLAOwEdM4kVcAlAV2IBdCBbAU1wGEB7FgB0IAbNgCcAyqIBuhAMZsAzhVgBZAJ49Bwmc27FELGYgC8iANoQANIgDMVgKwBdJTFMatO4gCE6QgCaiACkZVPjZuADMAtTc2bUJdAEorYgBDdgiAzhE2FMY2BISHLGtkMERo7k1Yj1gAb1hERsQ+EUJJXLZEEkZTB0QAfUFCeUYKJsQGppASiqq43QCaHN8AeWJBVTE+FOIAHm6APkRfXJSE4yPB4cZjY9PcABVuAEERERTVAISxpsnG6ZwADZyupKu54nosjk8otlmsNlsdvsmEcTowzhdEMQ2AB3AJos4/Rp/ZAlACSAFFiHR2O9GNwRMjGEcAOJsRhUmmiXIMr6Yq4jXDPeSc2kpABGwi+uDZHOpYvpIi+FAAvkA==">例如</a></p>
+
+<details class="codeblock" open>
+    <summary>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        <b>C#</b>
+    </summary><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cs" data-lang="cs"><span class="line"><span class="cl"><span class="na">[CollectionBuilder(typeof(MyCollection), nameof(Create))]</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="k">class</span> <span class="nc">MyCollection</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="kt">int</span><span class="p">[]</span> <span class="n">_list</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">MyCollection</span><span class="p">(</span><span class="n">ReadOnlySpan</span><span class="p">&lt;</span><span class="kt">int</span><span class="p">&gt;</span> <span class="n">data</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="n">_list</span> <span class="p">=</span> <span class="n">data</span><span class="p">.</span><span class="n">ToArray</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="c1">// Create Method</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kd">static</span> <span class="n">MyCollection</span> <span class="n">Create</span><span class="p">(</span><span class="n">ReadOnlySpan</span><span class="p">&lt;</span><span class="kt">int</span><span class="p">&gt;</span> <span class="n">data</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="k">new</span><span class="p">(</span><span class="n">data</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">IEnumerator</span><span class="p">&lt;</span><span class="kt">int</span><span class="p">&gt;</span> <span class="n">GetEnumerator</span><span class="p">()</span> <span class="p">=&gt;</span> <span class="n">_list</span><span class="p">.</span><span class="n">AsEnumerable</span><span class="p">().</span><span class="n">GetEnumerator</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></table>
+</div>
+</div></details>
+
+<p>可以使用集合表达式</p>
+
+<details class="codeblock" open>
+    <summary>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        <b>C#</b>
+    </summary><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cs" data-lang="cs"><span class="line"><span class="cl"><span class="n">MyCollection</span> <span class="n">mc</span> <span class="p">=</span> <span class="p">[</span><span class="m">1</span><span class="p">,</span> <span class="m">3</span><span class="p">,</span> <span class="m">5</span><span class="p">];</span></span></span></code></pre></td></tr></table>
+</div>
+</div></details>
+
+<p>这里有些需要注意的是</p>
+<ul>
+<li>集合类型需要有 <code>GetEnumerator()</code> 方法，但不必实现 <code>IEnumerable</code> 或 <code>IEnumerable&lt;T&gt;</code> 接口，也就是说这是一个鸭子类型</li>
+<li><code>Create Method</code> 的参数类型 <code>ReadOnlySpan&lt;T&gt;</code> 中的类型 <code>T</code> 必须和集合类型的元素类型保持一致，而集合类型的元素类型是根据 <code>GetEnumerator()</code> 的返回值类型确定的，若返回 <code>IEnumerator</code> 则元素类型为 <code>object</code>，若返回 <code>IEnumerator&lt;T&gt;</code> 则元素类型为 <code>T</code></li>
+</ul>
+<p>也可以是泛型的，<a href="https://sharplab.io/#v2:D4AQTAjAsAUCAMACEEAsBuWDkQHQBkBLAOwEdM4kVcAlAV2IBdCBbAU1wGEB7FgB0IAbNgCcAyqIBuhAMZsAzhVgBZAJ49Bwmc27EAPCUYA+RCxkREAXkQBtCABpEAZkcBWALoU1GrTv0yACwBDERMzMCtbAHIgqMcogCMoz1gsJ2QI725NNm1CXVgAb1hEUuR0lAA2RCycvN09ABUTThE2IMY2JqMAChp2gBMAeWJBVTE+IP1mxAGOoIBKKxNiNgB3HrnGRYoAX1SYGx9cvwAhOiEB0R7GVT42bgAzHtrffOIFx2Ig9ieX9Wyb10XDaHTYCwW7jSGRqALqfm6RRKZT4IkIkjBiEaNnciAA+oJCPJGBQyohkaUQOlXid3n1BiMxhMpt1ZvMlpYTASiYxIlsgrhGtwAIIiERBVQ9BaksoU8qIACSAFFiHR2OLGNwRKyAOJsRgqtWiDpaqXLfGE4m4YXyQ3qoIJYRS3B6g2q+2akRSvZAA">例如</a></p>
+
+<details class="codeblock" open>
+    <summary>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        <b>C#</b>
+    </summary><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cs" data-lang="cs"><span class="line"><span class="cl"><span class="n">MyCollection</span><span class="p">&lt;</span><span class="kt">int</span><span class="p">&gt;</span> <span class="n">mc1</span> <span class="p">=</span> <span class="p">[</span><span class="m">1</span><span class="p">,</span> <span class="m">3</span><span class="p">,</span> <span class="m">5</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl"><span class="n">MyCollection</span><span class="p">&lt;</span><span class="kt">char</span><span class="p">&gt;</span> <span class="n">mc2</span> <span class="p">=</span> <span class="p">[</span><span class="sc">&#39;a&#39;</span><span class="p">,</span> <span class="sc">&#39;b&#39;</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="k">class</span> <span class="nc">MyCollection</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// Create Method</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kd">static</span> <span class="n">MyCollection</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;</span> <span class="n">Create</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;(</span><span class="n">ReadOnlySpan</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;</span> <span class="n">data</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="k">new</span><span class="p">(</span><span class="n">data</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="na">
+</span></span></span><span class="line"><span class="cl"><span class="na">[CollectionBuilder(typeof(MyCollection), nameof(MyCollection.Create))]</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="k">class</span> <span class="nc">MyCollection</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">T</span><span class="p">[]</span> <span class="n">_list</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">MyCollection</span><span class="p">(</span><span class="n">ReadOnlySpan</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;</span> <span class="n">data</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="n">_list</span> <span class="p">=</span> <span class="n">data</span><span class="p">.</span><span class="n">ToArray</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">IEnumerator</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;</span> <span class="n">GetEnumerator</span><span class="p">()</span> <span class="p">=&gt;</span> <span class="n">_list</span><span class="p">.</span><span class="n">AsEnumerable</span><span class="p">().</span><span class="n">GetEnumerator</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></table>
+</div>
+</div></details>
+
+<p>上述示例均为最小实现，一般情况下集合类型需要继承 <code>IEnumerable&lt;T&gt;</code> 以使用 Linq，<a href="https://sharplab.io/#v2:D4AQTAjAsAUCAMACEEB0BhA9gG2wUwGMAXAS0wDsBnAblgWQgBZa4kVUAZE8gRxfvYAlAK7lSAWzwZM4gA4l8AJwDKeRQDcSBPDViwAsgE8suQqQoAebkQB8icQQiIAvIgDaEADSIAzN4CsALosRib4xGTkFgQAFgCGinYOYC7uAORxad5pAEZpwXpwPsgpoTjh5uSwAN6wiPXIxSgAbIhlphGWACp26Ip4cUR4Fj0AFIIDACYA8uTYhsqycVE9iJODcQCULnbkeADuo+tEWywAvoVuYWaRAELCCpNqo0SGsniYAGaj7RWRm95yHFJF8fsZyjcKBh+oM8JtNoE6E1SuCOpURjYAFwMHwYmp1BqyRQkdSwxBdNyBRAAfWwJEoRBYDUQBPqIGKv0h5HGU1m80Wywxaw222cdlp9KIqWOcVQXUwAEFFIo4oZRpsmQ1WYgAJIAUXIwkkKqImEUONQAHE8EQDUa1IMzeqdjS6QyrTa7cbHYp1Zr6tr2bqvQ7TYohdbbYbvWHnWLXZLUArKCGVTl8OqPVH7SanRrYGcgA=">完整示例如下</a></p>
+
+<details class="codeblock" open>
+    <summary>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        <b>C#</b>
+    </summary><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cs" data-lang="cs"><span class="line"><span class="cl"><span class="n">MyCollection</span><span class="p">&lt;</span><span class="kt">int</span><span class="p">&gt;</span> <span class="n">mc1</span> <span class="p">=</span> <span class="p">[</span><span class="m">1</span><span class="p">,</span> <span class="m">3</span><span class="p">,</span> <span class="m">5</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl"><span class="n">MyCollection</span><span class="p">&lt;</span><span class="kt">char</span><span class="p">&gt;</span> <span class="n">mc2</span> <span class="p">=</span> <span class="p">[</span><span class="sc">&#39;a&#39;</span><span class="p">,</span> <span class="sc">&#39;b&#39;</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="k">class</span> <span class="nc">MyCollection</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kd">static</span> <span class="n">MyCollection</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;</span> <span class="n">Create</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;(</span><span class="n">ReadOnlySpan</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;</span> <span class="n">data</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="k">new</span><span class="p">(</span><span class="n">data</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="na">
+</span></span></span><span class="line"><span class="cl"><span class="na">[CollectionBuilder(typeof(MyCollection), nameof(MyCollection.Create))]</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="k">class</span> <span class="nc">MyCollection</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;:</span> <span class="n">IEnumerable</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">T</span><span class="p">[]</span> <span class="n">_list</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">MyCollection</span><span class="p">(</span><span class="n">ReadOnlySpan</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;</span> <span class="n">data</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="n">_list</span> <span class="p">=</span> <span class="n">data</span><span class="p">.</span><span class="n">ToArray</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="n">IEnumerator</span> <span class="n">IEnumerable</span><span class="p">.</span><span class="n">GetEnumerator</span><span class="p">()</span> <span class="p">=&gt;</span> <span class="n">_list</span><span class="p">.</span><span class="n">GetEnumerator</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">IEnumerator</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;</span> <span class="n">GetEnumerator</span><span class="p">()</span> <span class="p">=&gt;</span> <span class="n">_list</span><span class="p">.</span><span class="n">AsEnumerable</span><span class="p">().</span><span class="n">GetEnumerator</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></table>
+</div>
+</div></details>
+
+<h3 id="接口实现">接口实现<a hidden class="anchor" aria-hidden="true" href="#接口实现">#</a></h3>
+<p>接口实现一般采用 <code>Create Method</code> 方式，在上述基础上，添加一个接口的<code>Create Method</code> 方式即可，<a href="https://sharplab.io/#v2:D4AQTAjAsAUCAMACEEAsBuWDkQHQBkBLAOwEdM4kVcAlAV2IBdCBbAU1wGEB7FgB0IAbNgCcAyqIBuhAMZsAzhVgBJALIBPHoOEzm3YgB4SjAHyIWMiIgC8iANoQANIgDMzgKwBdCms3dtbLqE+gYyABYAhiJmFmA29gDkEQnOCQBGCd6wWC7IcRpaOnrEsADesIiVyLkoAGyIBf5FwYYAKmacImwRjGwG7QAUNN0AJgDyxILqYnwRbWYjPREAlDZmxGwA7gOLjCsUAL7ZMHaFgcUAQnRCI6IDjOp8bNwAZgONAUH6y87EEeyvd5+T7FLhdHpsZbLTw5PINYHNELtABciF8Zy+8zKFSqfBEhEkEMQrTsnkQAH1BIR5IwKFVEDjKiBch9EcQhqMJlMZnN+gslqtrGZKdTGPFdhFcK1uABBEQiCLqAbLOlVRnVNEAUWIdHYCsY3BEfMQAHE2IxtbrRD1Dcq1hSqTTcDL5Ja9RE0sJlbgzRade6DSJlYdjqcmucWlcbncHk9AayI99fv9nm8E5iwd1elCYXBcsZRC8InI0eninzsTB6co3dbA8bfbX9baVbAjjAgA==">例如</a></p>
+
+<details class="codeblock" open>
+    <summary>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        <b>C#</b>
+    </summary><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cs" data-lang="cs"><span class="line"><span class="cl"><span class="n">IMyCollection</span><span class="p">&lt;</span><span class="kt">int</span><span class="p">&gt;</span> <span class="n">mc1</span> <span class="p">=</span> <span class="p">[</span><span class="m">1</span><span class="p">,</span> <span class="m">3</span><span class="p">,</span> <span class="m">5</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl"><span class="n">IMyCollection</span><span class="p">&lt;</span><span class="kt">char</span><span class="p">&gt;</span> <span class="n">mc2</span> <span class="p">=</span> <span class="p">[</span><span class="sc">&#39;a&#39;</span><span class="p">,</span> <span class="sc">&#39;b&#39;</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="k">class</span> <span class="nc">MyCollection</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kd">static</span> <span class="n">MyCollection</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;</span> <span class="n">Create</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;(</span><span class="n">ReadOnlySpan</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;</span> <span class="n">data</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="k">new</span><span class="p">(</span><span class="n">data</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="na">
+</span></span></span><span class="line"><span class="cl"><span class="na">[CollectionBuilder(typeof(MyCollection), nameof(MyCollection.Create))]</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="k">class</span> <span class="nc">MyCollection</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;:</span> <span class="n">IMyCollection</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">T</span><span class="p">[]</span> <span class="n">_list</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">MyCollection</span><span class="p">(</span><span class="n">ReadOnlySpan</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;</span> <span class="n">data</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="n">_list</span> <span class="p">=</span> <span class="n">data</span><span class="p">.</span><span class="n">ToArray</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">IEnumerator</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;</span> <span class="n">GetEnumerator</span><span class="p">()</span> <span class="p">=&gt;</span> <span class="n">_list</span><span class="p">.</span><span class="n">AsEnumerable</span><span class="p">().</span><span class="n">GetEnumerator</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="na">
+</span></span></span><span class="line"><span class="cl"><span class="na">[CollectionBuilder(typeof(MyCollection), nameof(MyCollection.Create))]</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="k">interface</span> <span class="nc">IMyCollection</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// 一般情况下，继承 IEnumerable&lt;T&gt; 即可</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// 但是若未继承 IEnumerable&lt;T&gt; ，则必须要有该方法，以确定集合接口的元素类型</span>
+</span></span><span class="line"><span class="cl">    <span class="n">IEnumerator</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;</span> <span class="n">GetEnumerator</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></table>
+</div>
+</div></details>
+
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://kiyanyang.github.io/tags/dotnet/">.Net</a></li>
+      <li><a href="https://kiyanyang.github.io/tags/csharp/">C#</a></li>
+      <li><a href="https://kiyanyang.github.io/tags/guide/">教程</a></li>
+    </ul>
+    
+
+
+
+<div class="license-box">
+    <span class="license-title">
+        <b>版权声明</b>
+        <a rel="license" aria-label="版权" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0"><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" height="1em" viewBox="0 0 496 512"><path d="M245.83 214.87l-33.22 17.28c-9.43-19.58-25.24-19.93-27.46-19.93-22.13 0-33.22 14.61-33.22 43.84 0 23.57 9.21 43.84 33.22 43.84 14.47 0 24.65-7.09 30.57-21.26l30.55 15.5c-6.17 11.51-25.69 38.98-65.1 38.98-22.6 0-73.96-10.32-73.96-77.05 0-58.69 43-77.06 72.63-77.06 30.72-.01 52.7 11.95 65.99 35.86zm143.05 0l-32.78 17.28c-9.5-19.77-25.72-19.93-27.9-19.93-22.14 0-33.22 14.61-33.22 43.84 0 23.55 9.23 43.84 33.22 43.84 14.45 0 24.65-7.09 30.54-21.26l31 15.5c-2.1 3.75-21.39 38.98-65.09 38.98-22.69 0-73.96-9.87-73.96-77.05 0-58.67 42.97-77.06 72.63-77.06 30.71-.01 52.58 11.95 65.56 35.86zM247.56 8.05C104.74 8.05 0 123.11 0 256.05c0 138.49 113.6 248 247.56 248 129.93 0 248.44-100.87 248.44-248 0-137.87-106.62-248-248.44-248zm.87 450.81c-112.54 0-203.7-93.04-203.7-202.81 0-105.42 85.43-203.27 203.72-203.27 112.53 0 202.82 89.46 202.82 203.26-.01 121.69-99.68 202.82-202.84 202.82z"/></svg><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" height="1em" viewBox="0 0 496 512"><path d="M314.9 194.4v101.4h-28.3v120.5h-77.1V295.9h-28.3V194.4c0-4.4 1.6-8.2 4.6-11.3 3.1-3.1 6.9-4.7 11.3-4.7H299c4.1 0 7.8 1.6 11.1 4.7 3.1 3.2 4.8 6.9 4.8 11.3zm-101.5-63.7c0-23.3 11.5-35 34.5-35s34.5 11.7 34.5 35c0 23-11.5 34.5-34.5 34.5s-34.5-11.5-34.5-34.5zM247.6 8C389.4 8 496 118.1 496 256c0 147.1-118.5 248-248.4 248C113.6 504 0 394.5 0 256 0 123.1 104.7 8 247.6 8zm.8 44.7C130.2 52.7 44.7 150.6 44.7 256c0 109.8 91.2 202.8 203.7 202.8 103.2 0 202.8-81.1 202.8-202.8.1-113.8-90.2-203.3-202.8-203.3z"/></svg><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" height="1em" viewBox="0 0 496 512"><path d="M247.6 8C387.4 8 496 115.9 496 256c0 147.2-118.5 248-248.4 248C113.1 504 0 393.2 0 256 0 123.1 104.7 8 247.6 8zM55.8 189.1c-7.4 20.4-11.1 42.7-11.1 66.9 0 110.9 92.1 202.4 203.7 202.4 122.4 0 177.2-101.8 178.5-104.1l-93.4-41.6c-7.7 37.1-41.2 53-68.2 55.4v38.1h-28.8V368c-27.5-.3-52.6-10.2-75.3-29.7l34.1-34.5c31.7 29.4 86.4 31.8 86.4-2.2 0-6.2-2.2-11.2-6.6-15.1-14.2-6-1.8-.1-219.3-97.4zM248.4 52.3c-38.4 0-112.4 8.7-170.5 93l94.8 42.5c10-31.3 40.4-42.9 63.8-44.3v-38.1h28.8v38.1c22.7 1.2 43.4 8.9 62 23L295 199.7c-42.7-29.9-83.5-8-70 11.1 53.4 24.1 43.8 19.8 93 41.6l127.1 56.7c4.1-17.4 6.2-35.1 6.2-53.1 0-57-19.8-105-59.3-143.9-39.3-39.9-87.2-59.8-143.6-59.8z"/></svg><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" height="1em" viewBox="0 0 496 512"><path d="M247.6 8C389.4 8 496 118.1 496 256c0 147.1-118.5 248-248.4 248C113.6 504 0 394.5 0 256 0 123.1 104.7 8 247.6 8zm.8 44.7C130.2 52.7 44.7 150.6 44.7 256c0 109.8 91.2 202.8 203.7 202.8 103.2 0 202.8-81.1 202.8-202.8.1-113.8-90.2-203.3-202.8-203.3zM137.7 221c13-83.9 80.5-95.7 108.9-95.7 99.8 0 127.5 82.5 127.5 134.2 0 63.6-41 132.9-128.9 132.9-38.9 0-99.1-20-109.4-97h62.5c1.5 30.1 19.6 45.2 54.5 45.2 23.3 0 58-18.2 58-82.8 0-82.5-49.1-80.6-56.7-80.6-33.1 0-51.7 14.6-55.8 43.8h18.2l-49.2 49.2-49-49.2h19.4z"/></svg></a>
+    </span>
+    <div class="license-meta">
+        <ul>
+            <li>作者：Kiyan</li>
+            <li>链接：https://kiyanyang.github.io/posts/ddebf1c6/</li>
+            <li>许可：<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0)</a></li>
+        </ul>
+    </div>
+</div>
+
+    
+<nav class="paginav">
+  <a class="next" href="/posts/43fb94d0/">
+    <span class="title">下一页 »</span>
+    <br>
+    <span>为 WinUI 3 标题栏原生菜单添加深色主题支持</span>
+  </a>
+</nav>
+
+  </footer>
+<footer id="comment">
+    <script src="https://giscus.app/client.js"
+        data-repo="KiyanYang/KiyanYang.github.io"
+        data-repo-id="MDEwOlJlcG9zaXRvcnkzODQ2NDE5MTA="
+        data-category="Giscus"
+        data-category-id="DIC_kwDOFu0rds4CUox8"
+        data-mapping="pathname"
+        data-strict="1"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="bottom"
+        data-theme="preferred_color_scheme"
+        data-lang="en"
+        data-loading="lazy"
+        crossorigin="anonymous"
+        async>
+</script>
+
+    <a href="#comment" aria-label="go to comment" title="Go to Comment (Alt + B)" class="top-link comment-link" id="comment-link" accesskey="b">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+            <path d="M511.1 63.1v287.1c0 35.25-28.75 63.1-64 63.1h-144l-124.9 93.68c-7.875 5.75-19.12 .0497-19.12-9.7v-83.98h-96c-35.25 0-64-28.75-64-63.1V63.1c0-35.25 28.75-63.1 64-63.1h384C483.2 0 511.1 28.75 511.1 63.1z" />
+        </svg>
+    </a>
+    <script>
+        let comment = document.getElementById("comment");
+        let btnToComment = document.getElementById("comment-link");
+        document.addEventListener("scroll", function () {
+            const e = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
+            const s = comment.offsetTop - document.documentElement.scrollTop;
+            if (s > e) {
+                btnToComment.style.visibility = "visible";
+                btnToComment.style.opacity = "1";
+            } else {
+                btnToComment.style.visibility = "hidden";
+                btnToComment.style.opacity = "0";
+            }
+        });
+    </script>
+</footer>
+
+</article>
+    </main>
+    
+<footer class="footer">
+    <span>&copy; 2024 <a href="https://kiyanyang.github.io/">Kiyan&#39;s Blog</a></span>
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = '复制';
+
+        function copyingDone() {
+            copybutton.innerHTML = '已复制！';
+            setTimeout(() => {
+                copybutton.innerHTML = '复制';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>

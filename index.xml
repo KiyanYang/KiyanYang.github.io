@@ -11,7 +11,7 @@
     </image>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Wed, 15 Feb 2023 12:12:54 +0800</lastBuildDate><atom:link href="https://kiyanyang.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 16 Jul 2024 10:41:51 +0800</lastBuildDate><atom:link href="https://kiyanyang.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>网站管理</title>
       <link>https://kiyanyang.github.io/extras/management/</link>
@@ -46,6 +46,15 @@
       
       <guid>https://kiyanyang.github.io/extras/open-source-games/</guid>
       <description>开源的网页小游戏。</description>
+    </item>
+    
+    <item>
+      <title>C# 集合表达式</title>
+      <link>https://kiyanyang.github.io/posts/ddebf1c6/</link>
+      <pubDate>Tue, 16 Jul 2024 10:41:51 +0800</pubDate>
+      
+      <guid>https://kiyanyang.github.io/posts/ddebf1c6/</guid>
+      <description>C# 12 引入集合表达式（collection expressions），这是一种使用新的简洁语法来创建集合。本文介绍了使用方法和创建支持集合表达式的自定义集合类型。</description>
     </item>
     
     <item>
