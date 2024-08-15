@@ -9,142 +9,113 @@
       <url>https://kiyanyang.github.io/papermod-cover.png</url>
       <link>https://kiyanyang.github.io/papermod-cover.png</link>
     </image>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>zh</language><atom:link href="https://kiyanyang.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <generator>Hugo -- 0.132.1</generator>
+    <language>zh</language>
+    <atom:link href="https://kiyanyang.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>C# 集合表达式</title>
       <link>https://kiyanyang.github.io/posts/ddebf1c6/</link>
       <pubDate>Tue, 16 Jul 2024 10:41:51 +0800</pubDate>
-      
       <guid>https://kiyanyang.github.io/posts/ddebf1c6/</guid>
       <description>C# 12 引入集合表达式（collection expressions），这是一种使用新的简洁语法来创建集合。本文介绍了使用方法和创建支持集合表达式的自定义集合类型。</description>
     </item>
-    
     <item>
       <title>为 WinUI 3 标题栏原生菜单添加深色主题支持</title>
       <link>https://kiyanyang.github.io/posts/43fb94d0/</link>
       <pubDate>Wed, 15 Feb 2023 12:12:54 +0800</pubDate>
-      
       <guid>https://kiyanyang.github.io/posts/43fb94d0/</guid>
       <description>WinUI 3 自动支持深色和浅色主题，但是其原生标题栏却没有自动支持，本文通过调用非公开的 Windows API 为 WinUI 3 标题栏原生菜单添加深色主题支持。</description>
     </item>
-    
     <item>
       <title>Windows 使用技巧</title>
       <link>https://kiyanyang.github.io/posts/669e05b6/</link>
       <pubDate>Wed, 01 Feb 2023 18:50:17 +0800</pubDate>
-      
       <guid>https://kiyanyang.github.io/posts/669e05b6/</guid>
       <description>Windows 使用技巧。</description>
     </item>
-    
     <item>
       <title>.Net 反射性能测试</title>
       <link>https://kiyanyang.github.io/posts/8c9c9dbd/</link>
       <pubDate>Mon, 14 Nov 2022 11:02:41 +0800</pubDate>
-      
       <guid>https://kiyanyang.github.io/posts/8c9c9dbd/</guid>
       <description>通过对 .Net6 和 .Net7 反射性能的简要测试，为性能优化提供依据。</description>
     </item>
-    
     <item>
       <title>重装系统之软件配置与安装</title>
       <link>https://kiyanyang.github.io/posts/dd6adb6d/</link>
       <pubDate>Sun, 12 Jun 2022 12:57:38 +0800</pubDate>
-      
       <guid>https://kiyanyang.github.io/posts/dd6adb6d/</guid>
       <description>重装会涉及软件的配置与安装，本文记录部分软件配置的导出与导入，同时附带软件列表。</description>
     </item>
-    
     <item>
       <title>从 Hexo 迁移至 Hugo 小记</title>
       <link>https://kiyanyang.github.io/posts/c859e42e/</link>
       <pubDate>Thu, 09 Jun 2022 22:54:39 +0800</pubDate>
-      
       <guid>https://kiyanyang.github.io/posts/c859e42e/</guid>
       <description>记录博客从 Hexo 迁移至 Hugo 所需的参考文档，以及遇到的问题及解决方案。</description>
     </item>
-    
     <item>
       <title>使用 Hexo 过滤器实现 Fluid 主题的代码折叠</title>
       <link>https://kiyanyang.github.io/posts/c4dd4019/</link>
       <pubDate>Sun, 22 May 2022 20:47:49 +0800</pubDate>
-      
       <guid>https://kiyanyang.github.io/posts/c4dd4019/</guid>
       <description>使用 Hexo 过滤器（Filter）实现 Fluid 主题的代码折叠。</description>
     </item>
-    
     <item>
       <title>VTK9.1.0 &#43; VS2022 &#43; Qt5.12 编译</title>
       <link>https://kiyanyang.github.io/posts/fdce5f9b/</link>
       <pubDate>Wed, 20 Apr 2022 17:33:36 +0800</pubDate>
-      
       <guid>https://kiyanyang.github.io/posts/fdce5f9b/</guid>
       <description>本文在 Windows11 平台使用 Visual Studio 2022 编译 VTK 9.1.0。</description>
     </item>
-    
     <item>
       <title>使用 GitHub Actions 自动部署 Hexo 博客</title>
       <link>https://kiyanyang.github.io/posts/cdc6f5f3/</link>
       <pubDate>Sat, 18 Dec 2021 19:17:06 +0800</pubDate>
-      
       <guid>https://kiyanyang.github.io/posts/cdc6f5f3/</guid>
       <description>本文章通过使用 GitHub Actions 自动将博客源文件部署到 GitHub Pages，并在 Actions 中主动调用 Cloudflare Pages 部署挂钩，来避免一些不必要的部署。</description>
     </item>
-    
     <item>
       <title>Hexo-Fluid 在目录的标题前增加光标</title>
       <link>https://kiyanyang.github.io/posts/277e1260/</link>
       <pubDate>Wed, 15 Dec 2021 23:41:34 +0800</pubDate>
-      
       <guid>https://kiyanyang.github.io/posts/277e1260/</guid>
       <description>由于 Hexo-Theme-Fluid 主题（v1.8.14 之前）的目录前没有光标，所以想自己增加一个光标，并添加切换动画。</description>
     </item>
-    
     <item>
       <title>Hexo-Fluid 博客美化和修改</title>
       <link>https://kiyanyang.github.io/posts/f92be1eb/</link>
       <pubDate>Tue, 14 Dec 2021 14:45:22 +0800</pubDate>
-      
       <guid>https://kiyanyang.github.io/posts/f92be1eb/</guid>
       <description>基于 Hexo-Theme-Fluid 博客主题的简单美化和修改，效果参见本博客自身。</description>
     </item>
-    
     <item>
       <title>VS Code 中关于 Hexo 的任务（Tasks）</title>
       <link>https://kiyanyang.github.io/posts/5a271947/</link>
       <pubDate>Tue, 14 Dec 2021 13:50:25 +0800</pubDate>
-      
       <guid>https://kiyanyang.github.io/posts/5a271947/</guid>
       <description>VS Code 中关于 Hexo 的任务（Tasks）。</description>
     </item>
-    
     <item>
       <title>使用 VS Code 的任务（Tasks）便捷操作 Hexo</title>
       <link>https://kiyanyang.github.io/posts/b66e483f/</link>
       <pubDate>Sat, 11 Dec 2021 13:05:49 +0800</pubDate>
-      
       <guid>https://kiyanyang.github.io/posts/b66e483f/</guid>
       <description>本文通过配置 VS Code 任务，使用 &lt;code&gt;Ctrl+Shift+B&lt;/code&gt;（“运行生成任务”的快捷键）完成 Hexo 的清理、生成、开启本地预览，并且可以使用 VS Code 的“终端”菜单下的“运行命令”完成上述的单个命令。</description>
     </item>
-    
     <item>
       <title>Markdown 语法 拓展篇</title>
       <link>https://kiyanyang.github.io/posts/89b5ce09/</link>
       <pubDate>Tue, 10 Aug 2021 15:23:41 +0800</pubDate>
-      
       <guid>https://kiyanyang.github.io/posts/89b5ce09/</guid>
       <description>只使用基础 Markdown 无法满足一些常用需求，比如文字颜色、图片大小等。这时我们可以依托 Markdown 可与 HTML 混编的特性，直接在 Markdown 中使用 HTML，本文记录了一些常用的 HTML 语句。</description>
     </item>
-    
     <item>
       <title>Markdown 语法 基本篇</title>
       <link>https://kiyanyang.github.io/posts/78e09c9c/</link>
       <pubDate>Sun, 11 Jul 2021 13:15:32 +0800</pubDate>
-      
       <guid>https://kiyanyang.github.io/posts/78e09c9c/</guid>
       <description>Markdown 是一种轻量级标记语言，因简洁、高效、易读、易写，Markdown 被大量使用。本文介绍了 Markdown 的基本语法。</description>
     </item>
-    
   </channel>
 </rss>

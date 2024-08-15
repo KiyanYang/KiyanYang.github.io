@@ -10,7 +10,7 @@
 <meta name="description" content="VS Code 中关于 Hexo 的任务（Tasks）。">
 <meta name="author" content="Kiyan">
 <link rel="canonical" href="https://kiyanyang.github.io/posts/5a271947/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.cab22e7bf36da7c15c63cdb748e2b5c4e9d64fc8c0d84ef2eb6d3ad0a557c01c.css" integrity="sha256-yrIue/Ntp8FcY823SOK1xOnWT8jA2E7y62060KVXwBw=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.d708a4fae7065b0040839ba21b3d95c293ed6b21034e5284060a3b6b051327a5.css" integrity="sha256-1wik&#43;ucGWwBAg5uiGz2VwpPtayEDTlKEBgo7awUTJ6U=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://kiyanyang.github.io/img/favicon.webp">
 <link rel="icon" type="image/png" sizes="16x16" href="https://kiyanyang.github.io/img/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="https://kiyanyang.github.io/img/favicon-32x32.png">
@@ -36,7 +36,7 @@
                 --secondary: rgb(155, 156, 157);
                 --tertiary: rgb(65, 66, 68);
                 --content: rgb(196, 196, 197);
-                --hljs-bg: rgb(46, 46, 51);
+                --code-block-bg: rgb(46, 46, 51);
                 --code-bg: rgb(55, 56, 62);
                 --border: rgb(51, 51, 51);
             }
@@ -57,7 +57,7 @@
     </style>
 </noscript>
 
-<link crossorigin="anonymous" href="/assets/scss/bundle.72020897a8abd268b64f5fbc63fccc8189a1623313d12ad386fb97a3fa60d70c.css" integrity="sha256-cgIIl6ir0mi2T1&#43;8Y/zMgYmhYjMT0SrThvuXo/pg1ww=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/scss/bundle.e50cc5059743ddaaaf920034cece28910d4687e9903248b269b4d12c5683574e.css" integrity="sha256-5QzFBZdD3aqvkgA0zs4okQ1Gh&#43;mQMkiyabTRLFaDV04=" rel="preload stylesheet" as="style">
 
 
 
@@ -69,19 +69,6 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&amp;family=Noto&#43;Sans&#43;SC:wght@400;500;700&amp;display=swap" as="style" onload="this.onload=null;this.rel='stylesheet';" crossorigin>
 <link rel="preload" href="https://registry.npmmirror.com/katex/0.16.7/files/dist/katex.min.css" as="style" onload="this.onload=null;this.rel='stylesheet';" crossorigin>
-
-<script defer src="https://registry.npmmirror.com/katex/0.16.7/files/dist/katex.min.js" crossorigin="anonymous"></script>
-
-<script defer src="https://registry.npmmirror.com/katex/0.16.7/files/dist/contrib/auto-render.min.js" crossorigin="anonymous"
-    onload="renderMathInElement(document.getElementsByClassName('post-content')[0], {
-    delimiters: [
-        {left: '$$', right: '$$', display: true},
-        {left: '\\[', right: '\\]', display: true},
-        {left: '$', right: '$', display: false},
-        {left: '\\(', right: '\\)', display: false}
-    ]
-});"></script>
-<script defer src="https://registry.npmmirror.com/katex/0.16.7/files/dist/contrib/copy-tex.min.js" crossorigin="anonymous"></script>
 
 <script>
     window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', ({ matches }) => {
@@ -98,13 +85,14 @@
 <meta property="og:title" content="VS Code 中关于 Hexo 的任务（Tasks）" />
 <meta property="og:description" content="VS Code 中关于 Hexo 的任务（Tasks）。" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://kiyanyang.github.io/posts/5a271947/" /><meta property="og:image" content="https://kiyanyang.github.io/papermod-cover.png"/><meta property="article:section" content="posts" />
+<meta property="og:url" content="https://kiyanyang.github.io/posts/5a271947/" />
+<meta property="og:image" content="https://kiyanyang.github.io/papermod-cover.png" />
+<meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2021-12-14T13:50:25+08:00" />
 <meta property="article:modified_time" content="2023-06-12T09:43:45+08:00" />
 
-<meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:image" content="https://kiyanyang.github.io/papermod-cover.png"/>
-
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://kiyanyang.github.io/papermod-cover.png" />
 <meta name="twitter:title" content="VS Code 中关于 Hexo 的任务（Tasks）"/>
 <meta name="twitter:description" content="VS Code 中关于 Hexo 的任务（Tasks）。"/>
 
@@ -139,10 +127,10 @@
   "keywords": [
     "VS Code", "Hexo"
   ],
-  "articleBody": "注意：本站已迁移至 Hugo。请访问本站「历史节点」获取有关 Hexo 的内容。\nVS Code 中关于 Hexo 的任务（Tasks）。\ntasks.json JSON 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 { \"version\": \"2.0.0\", \"tasks\": [ { \"label\": \"清理、生成并预览\", \"dependsOrder\": \"sequence\", \"dependsOn\": [\"清理\", \"生成\", \"预览\"], \"problemMatcher\": [], \"group\": { \"kind\": \"build\", \"isDefault\": true } }, { \"type\": \"shell\", \"label\": \"清理\", \"command\": \"hexo clean\", \"presentation\": { \"panel\": \"dedicated\", \"clear\": true }, \"problemMatcher\": [] }, { \"type\": \"shell\", \"label\": \"生成\", \"command\": \"hexo generate\", \"presentation\": { \"panel\": \"dedicated\", \"clear\": true }, \"problemMatcher\": [] }, { \"type\": \"shell\", \"label\": \"预览\", \"command\": \"hexo server\", \"presentation\": { \"panel\": \"dedicated\", \"clear\": true }, \"problemMatcher\": [] }, { \"type\": \"shell\", \"label\": \"新建文章\", \"command\": \"hexo\", \"args\": [\"new\", \"post\", \"${input:postName}\"], \"presentation\": { \"panel\": \"dedicated\", \"clear\": true }, \"problemMatcher\": [] }, { \"type\": \"shell\", \"label\": \"新建草稿\", \"command\": \"hexo\", \"args\": [\"new\", \"draft\", \"${input:postName}\"], \"presentation\": { \"panel\": \"dedicated\", \"clear\": true }, \"problemMatcher\": [] } ], \"inputs\": [ { \"type\": \"promptString\", \"id\": \"postName\", \"description\": \"文章名称\" } ] } 参考 VS Code docs Integrate with External Tools via Tasks Variables Reference Hexo docs Commands ",
-  "wordCount" : "409",
+  "articleBody": "注意：本站已迁移至 Hugo。请访问本站「历史节点」获取有关 Hexo 的内容。\nVS Code 中关于 Hexo 的任务（Tasks）。\ntasks.json JSON { \"version\": \"2.0.0\", \"tasks\": [ { \"label\": \"清理、生成并预览\", \"dependsOrder\": \"sequence\", \"dependsOn\": [\"清理\", \"生成\", \"预览\"], \"problemMatcher\": [], \"group\": { \"kind\": \"build\", \"isDefault\": true } }, { \"type\": \"shell\", \"label\": \"清理\", \"command\": \"hexo clean\", \"presentation\": { \"panel\": \"dedicated\", \"clear\": true }, \"problemMatcher\": [] }, { \"type\": \"shell\", \"label\": \"生成\", \"command\": \"hexo generate\", \"presentation\": { \"panel\": \"dedicated\", \"clear\": true }, \"problemMatcher\": [] }, { \"type\": \"shell\", \"label\": \"预览\", \"command\": \"hexo server\", \"presentation\": { \"panel\": \"dedicated\", \"clear\": true }, \"problemMatcher\": [] }, { \"type\": \"shell\", \"label\": \"新建文章\", \"command\": \"hexo\", \"args\": [\"new\", \"post\", \"${input:postName}\"], \"presentation\": { \"panel\": \"dedicated\", \"clear\": true }, \"problemMatcher\": [] }, { \"type\": \"shell\", \"label\": \"新建草稿\", \"command\": \"hexo\", \"args\": [\"new\", \"draft\", \"${input:postName}\"], \"presentation\": { \"panel\": \"dedicated\", \"clear\": true }, \"problemMatcher\": [] } ], \"inputs\": [ { \"type\": \"promptString\", \"id\": \"postName\", \"description\": \"文章名称\" } ] } 参考 VS Code docs Integrate with External Tools via Tasks Variables Reference Hexo docs Commands ",
+  "wordCount" : "335",
   "inLanguage": "zh",
-  "datePublished": "2021-12-14T13:50:25+08:00",
+  "image": "https://kiyanyang.github.io/papermod-cover.png","datePublished": "2021-12-14T13:50:25+08:00",
   "dateModified": "2023-06-12T09:43:45+08:00",
   "author":{
     "@type": "Person",
@@ -177,8 +165,6 @@
         <div class="logo">
             <a href="https://kiyanyang.github.io/" accesskey="h" title="Kiyan&#39;s Blog (Alt + H)">Kiyan&#39;s Blog</a>
             <div class="logo-switches">
-                <ul class="lang-switch"><li>|</li>
-                </ul>
             </div>
         </div>
         <ul id="menu">
@@ -229,7 +215,7 @@
     <li><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" height="1em" viewBox="0 0 448 512"><path d="M96 32V64H48C21.5 64 0 85.5 0 112v48H448V112c0-26.5-21.5-48-48-48H352V32c0-17.7-14.3-32-32-32s-32 14.3-32 32V64H160V32c0-17.7-14.3-32-32-32S96 14.3 96 32zM448 192H0V464c0 26.5 21.5 48 48 48H400c26.5 0 48-21.5 48-48V192z"/></svg><span title='2021-12-14 13:50:25 +0800 +0800'>2021-12-14 13:50</span></li>
     <li><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" height="1em" viewBox="0 0 448 512"><path d="M128 0c17.7 0 32 14.3 32 32V64H288V32c0-17.7 14.3-32 32-32s32 14.3 32 32V64h48c26.5 0 48 21.5 48 48v48H0V112C0 85.5 21.5 64 48 64H96V32c0-17.7 14.3-32 32-32zM0 192H448V464c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V192zM329 305c9.4-9.4 9.4-24.6 0-33.9s-24.6-9.4-33.9 0l-95 95-47-47c-9.4-9.4-24.6-9.4-33.9 0s-9.4 24.6 0 33.9l64 64c9.4 9.4 24.6 9.4 33.9 0L329 305z"/></svg><span title='2023-06-12 09:43:45 +0800 +0800'>2023-06-12 09:43</span></li>
     <li><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" height="1em" viewBox="0 0 512 512"><path d="M256 0a256 256 0 1 1 0 512A256 256 0 1 1 256 0zM232 120V256c0 8 4 15.5 10.7 20l96 64c11 7.4 25.9 4.4 33.3-6.7s4.4-25.9-6.7-33.3L280 243.2V120c0-13.3-10.7-24-24-24s-24 10.7-24 24z"/></svg>1 分钟</li>
-    <li><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" height="1em" viewBox="0 0 512 512"><path d="M362.7 19.3L314.3 67.7 444.3 197.7l48.4-48.4c25-25 25-65.5 0-90.5L453.3 19.3c-25-25-65.5-25-90.5 0zm-71 71L58.6 323.5c-10.4 10.4-18 23.3-22.2 37.4L1 481.2C-1.5 489.7 .8 498.8 7 505s15.3 8.5 23.7 6.1l120.3-35.4c14.1-4.2 27-11.8 37.4-22.2L421.7 220.3 291.7 90.3z"/></svg>409 字</li>
+    <li><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" height="1em" viewBox="0 0 512 512"><path d="M362.7 19.3L314.3 67.7 444.3 197.7l48.4-48.4c25-25 25-65.5 0-90.5L453.3 19.3c-25-25-65.5-25-90.5 0zm-71 71L58.6 323.5c-10.4 10.4-18 23.3-22.2 37.4L1 481.2C-1.5 489.7 .8 498.8 7 505s15.3 8.5 23.7 6.1l120.3-35.4c14.1-4.2 27-11.8 37.4-22.2L421.7 220.3 291.7 90.3z"/></svg>335 字</li>
     <li><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" height="1em" viewBox="0 0 640 512"><path d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H322.8c-3.1-8.8-3.7-18.4-1.4-27.8l15-60.1c2.8-11.3 8.6-21.5 16.8-29.7l40.3-40.3c-32.1-31-75.7-50.1-123.9-50.1H178.3zm435.5-68.3c-15.6-15.6-40.9-15.6-56.6 0l-29.4 29.4 71 71 29.4-29.4c15.6-15.6 15.6-40.9 0-56.6l-14.4-14.4zM375.9 417c-4.1 4.1-7 9.2-8.4 14.9l-15 60.1c-1.4 5.5 .2 11.2 4.2 15.2s9.7 5.6 15.2 4.2l60.1-15c5.6-1.4 10.8-4.3 14.9-8.4L576.1 358.7l-71-71L375.9 417z"/></svg>Kiyan</li>
 </ul>
 
@@ -261,85 +247,7 @@
     <summary>
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
         <b>JSON</b>
-    </summary><div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
-</span><span class="lnt">18
-</span><span class="lnt">19
-</span><span class="lnt">20
-</span><span class="lnt">21
-</span><span class="lnt">22
-</span><span class="lnt">23
-</span><span class="lnt">24
-</span><span class="lnt">25
-</span><span class="lnt">26
-</span><span class="lnt">27
-</span><span class="lnt">28
-</span><span class="lnt">29
-</span><span class="lnt">30
-</span><span class="lnt">31
-</span><span class="lnt">32
-</span><span class="lnt">33
-</span><span class="lnt">34
-</span><span class="lnt">35
-</span><span class="lnt">36
-</span><span class="lnt">37
-</span><span class="lnt">38
-</span><span class="lnt">39
-</span><span class="lnt">40
-</span><span class="lnt">41
-</span><span class="lnt">42
-</span><span class="lnt">43
-</span><span class="lnt">44
-</span><span class="lnt">45
-</span><span class="lnt">46
-</span><span class="lnt">47
-</span><span class="lnt">48
-</span><span class="lnt">49
-</span><span class="lnt">50
-</span><span class="lnt">51
-</span><span class="lnt">52
-</span><span class="lnt">53
-</span><span class="lnt">54
-</span><span class="lnt">55
-</span><span class="lnt">56
-</span><span class="lnt">57
-</span><span class="lnt">58
-</span><span class="lnt">59
-</span><span class="lnt">60
-</span><span class="lnt">61
-</span><span class="lnt">62
-</span><span class="lnt">63
-</span><span class="lnt">64
-</span><span class="lnt">65
-</span><span class="lnt">66
-</span><span class="lnt">67
-</span><span class="lnt">68
-</span><span class="lnt">69
-</span><span class="lnt">70
-</span><span class="lnt">71
-</span><span class="lnt">72
-</span><span class="lnt">73
-</span><span class="lnt">74
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span>
+    </summary><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span>
 </span></span><span class="line"><span class="cl">  <span class="nt">&#34;version&#34;</span><span class="p">:</span> <span class="s2">&#34;2.0.0&#34;</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">  <span class="nt">&#34;tasks&#34;</span><span class="p">:</span> <span class="p">[</span>
 </span></span><span class="line"><span class="cl">    <span class="p">{</span>
@@ -412,9 +320,7 @@
 </span></span><span class="line"><span class="cl">      <span class="nt">&#34;description&#34;</span><span class="p">:</span> <span class="s2">&#34;文章名称&#34;</span>
 </span></span><span class="line"><span class="cl">    <span class="p">}</span>
 </span></span><span class="line"><span class="cl">  <span class="p">]</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></table>
-</div>
-</div></details>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div></details>
 
 <h2 id="参考">参考<a hidden class="anchor" aria-hidden="true" href="#参考">#</a></h2>
 <ul>
@@ -516,7 +422,8 @@
     </main>
     
 <footer class="footer">
-    <span>&copy; 2024 <a href="https://kiyanyang.github.io/">Kiyan&#39;s Blog</a></span>
+        <span>&copy; 2024 <a href="https://kiyanyang.github.io/">Kiyan&#39;s Blog</a></span> · 
+
     <span>
         Powered by
         <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
